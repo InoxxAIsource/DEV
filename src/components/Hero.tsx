@@ -1,104 +1,134 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { prefersReducedMotion } from '../lib/Reveal'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import { EASE, DUR, maskLine, stagger } from '@/lib/motion'
 
-gsap.registerPlugin(ScrollTrigger)
+const LINES = ['I build digital', 'experiences people', 'remember.']
 
 export function Hero() {
   const root = useRef<HTMLElement>(null)
+  const reduce = useReducedMotion()
 
-  useEffect(() => {
-    if (prefersReducedMotion() || !root.current) return
-    const ctx = gsap.context(() => {
-      gsap.to('.mask-line > span', {
-        y: 0,
-        duration: 1.1,
-        stagger: 0.12,
-        ease: 'power4.out',
-        delay: 0.15,
-      })
-      gsap.from('.hero-fade', {
-        opacity: 0,
-        y: 20,
-        duration: 0.9,
-        stagger: 0.1,
-        ease: 'power3.out',
-        delay: 0.7,
-      })
-      // Floating device parallax: video drifts slower than the page
-      gsap.to('.hero-video', {
-        yPercent: 14,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: root.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-        },
-      })
-    }, root)
-    return () => ctx.revert()
-  }, [])
+  /* Ambient drift only — the hero never pins or hijacks the scroll. */
+  const { scrollYProgress } = useScroll({
+    target: root,
+    offset: ['start start', 'end start'],
+  })
+  /* Ranges flatten under reduced motion rather than the style prop being
+     dropped — a conditional style prop renders differently on server and
+     client and breaks hydration. At progress 0 both variants are identity,
+     so the markup matches either way. */
+  const mediaY = useTransform(scrollYProgress, [0, 1], ['0%', reduce ? '0%' : '16%'])
+  const mediaScale = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 1.12])
+  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', reduce ? '0%' : '38%'])
+  const contentFade = useTransform(scrollYProgress, [0, 0.7], [1, reduce ? 1 : 0])
 
   return (
-    <section ref={root} className="relative min-h-[100dvh] overflow-hidden">
-      {/* Hero visual: cinematic floating tablet, warm amber glow */}
-      <div className="hero-video absolute inset-0">
+    <section
+      ref={root}
+      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden"
+    >
+      {/* Ambient layer */}
+      <motion.div
+        style={{ y: mediaY, scale: mediaScale }}
+        className="absolute inset-0 will-change-transform"
+      >
         <video
           src="/hero.mp4"
+          poster="/posters/hero.jpg"
           autoPlay
           muted
           loop
           playsInline
-          className="h-full w-full object-cover object-[center_22%]"
+          preload="metadata"
+          className="h-full w-full object-cover object-[center_20%]"
         />
-        {/* warm grade so the cool-toned footage sits in the amber palette */}
-        <div className="absolute inset-0 bg-[hsl(28_100%_55%/0.07)] mix-blend-soft-light" />
-        <div className="absolute inset-0 bg-bg/45 md:bg-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/70 to-bg/10" />
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-bg to-transparent" />
-      </div>
+        {/* Grade the footage into the amber shell, then sink it back so the
+            type carries the frame rather than competing with it. */}
+        <div className="absolute inset-0 bg-[hsl(28_100%_55%/0.06)] mix-blend-soft-light" />
+        <div className="absolute inset-0 bg-bg/55" />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/40 to-bg/70" />
+      </motion.div>
 
-      <div className="relative mx-auto flex min-h-[100dvh] max-w-[1400px] items-center px-5 pt-20 md:px-10">
-        <div className="max-w-2xl">
-          <h1 className="text-5xl font-semibold leading-[1.04] tracking-tighter md:text-6xl lg:text-7xl">
-            <span className="mask-line">
-              <span>I build web,</span>
-            </span>
-            <span className="mask-line">
-              <span>
-                blockchain <span className="text-accent">&amp; DeFi.</span>
+      <motion.div
+        style={{ y: contentY, opacity: contentFade }}
+        className="relative mx-auto w-full max-w-[1600px] px-6 pb-[14vh] md:px-12"
+      >
+        <motion.div variants={stagger(0.08, 0.15)} initial="hidden" animate="show">
+          <motion.p
+            variants={{
+              hidden: { opacity: 0 },
+              show: { opacity: 1, transition: { duration: DUR.slow, ease: EASE } },
+            }}
+            className="mb-10 font-mono text-[11px] uppercase tracking-[0.32em] text-muted"
+          >
+            Independent engineer — Web, Blockchain &amp; AI
+          </motion.p>
+
+          <h1 className="max-w-[16ch] text-[clamp(2.9rem,8.2vw,8.5rem)] font-semibold leading-[0.92] tracking-[-0.045em]">
+            {LINES.map((line, i) => (
+              <span key={line} className="block overflow-hidden pb-[0.06em]">
+                <motion.span
+                  variants={maskLine}
+                  className="block will-change-transform"
+                >
+                  {i === LINES.length - 1 ? <span className="text-accent">{line}</span> : line}
+                </motion.span>
               </span>
-            </span>
+            ))}
           </h1>
 
-          <p className="hero-fade mt-6 max-w-md text-lg leading-relaxed text-muted">
-            Production-grade platforms for founders, startups and businesses.
-          </p>
-
-          <div className="hero-fade mt-9 flex flex-wrap items-center gap-4">
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              show: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: DUR.slow, ease: EASE, delay: 0.1 },
+              },
+            }}
+            className="mt-12 flex flex-wrap items-center gap-3"
+          >
             <a
               href="#work"
-              className="rounded-full bg-accent px-7 py-3.5 font-semibold text-bg transition-transform hover:brightness-110 active:scale-[0.98]"
+              data-cursor="hover"
+              className="group inline-flex items-center gap-3 rounded-full bg-accent px-7 py-4 text-[15px] font-semibold text-bg transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-8px_hsl(28_100%_55%/0.5)] active:translate-y-0"
             >
-              See my work
+              View the work
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path
+                  d="M3 11L11 3M11 3H5M11 3V9"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </a>
             <a
               href="#contact"
-              className="rounded-full border border-line bg-bg/50 px-7 py-3.5 font-semibold text-ink backdrop-blur transition-colors hover:border-accent/50 active:scale-[0.98]"
+              data-cursor="hover"
+              className="inline-flex items-center rounded-full border border-line bg-bg/40 px-7 py-4 text-[15px] font-semibold text-ink backdrop-blur-sm transition-[transform,border-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-accent/50 active:translate-y-0"
             >
               Start a project
             </a>
-          </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
 
-          <p className="hero-fade mt-8 font-mono text-xs tracking-wide text-muted">
-            Independent engineer. Secure, scalable, shipped fast.
-          </p>
+      {/* Scroll cue */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: DUR.slow, delay: 1.1, ease: EASE }}
+        className="relative mx-auto w-full max-w-[1600px] px-6 pb-8 md:px-12"
+      >
+        <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-faint">
+          <span className="h-px w-10 bg-line" />
+          Scroll
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

@@ -12,6 +12,7 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [onLight, setOnLight] = useState(false)
 
   useEffect(() => {
     const io = new IntersectionObserver(([entry]) => setScrolled(!entry.isIntersecting), {
@@ -20,6 +21,42 @@ export function Nav() {
     const sentinel = document.getElementById('top-sentinel')
     if (sentinel) io.observe(sentinel)
     return () => io.disconnect()
+  }, [])
+
+  /*
+    Invert the bar over light project worlds. rootMargin collapses the viewport
+    to a thin band at the nav's own height, so a section only counts while it is
+    actually sitting behind the bar.
+  */
+  useEffect(() => {
+    const sections = document.querySelectorAll('[data-nav-theme]')
+    if (!sections.length) return
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            setOnLight((e.target as HTMLElement).dataset.navTheme === 'light')
+          }
+        }
+      },
+      { rootMargin: '-32px 0px -100% 0px', threshold: 0 },
+    )
+    sections.forEach((s) => io.observe(s))
+
+    /* Leaving the featured run entirely returns the bar to the dark shell. */
+    const onScroll = () => {
+      const anyBehind = [...sections].some((s) => {
+        const r = s.getBoundingClientRect()
+        return r.top <= 40 && r.bottom >= 40
+      })
+      if (!anyBehind) setOnLight(false)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      io.disconnect()
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   /* close on Escape, and lock scroll while the drawer is open */
@@ -41,21 +78,31 @@ export function Nav() {
         <a
           href="#"
           aria-label="Mohd Tauheed, home"
-          className="grid size-10 place-items-center rounded-full border border-line bg-bg/80 font-mono text-sm font-bold tracking-tight text-ink backdrop-blur transition-colors hover:border-accent/60"
+          className={`grid size-10 place-items-center rounded-full border font-mono text-sm font-bold tracking-tight backdrop-blur transition-colors duration-500 hover:border-accent/60 ${
+            onLight
+              ? 'border-black/15 bg-white/70 text-black'
+              : 'border-line bg-bg/80 text-ink'
+          }`}
         >
           MT
         </a>
 
         <nav
           className={`hidden items-center gap-1 rounded-full border px-2 py-1.5 backdrop-blur-md transition-all duration-500 md:flex ${
-            scrolled ? 'border-line bg-raised/85 shadow-[0_8px_30px_hsl(20_10%_2%/0.5)]' : 'border-line/60 bg-bg/40'
+            onLight
+              ? 'border-black/10 bg-white/70 shadow-[0_8px_30px_hsl(30_10%_40%/0.12)]'
+              : scrolled
+                ? 'border-line bg-raised/85 shadow-[0_8px_30px_hsl(20_10%_2%/0.5)]'
+                : 'border-line/60 bg-bg/40'
           }`}
         >
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="rounded-full px-4 py-1.5 text-sm text-muted transition-colors hover:bg-accent-soft hover:text-ink"
+              className={`rounded-full px-4 py-1.5 text-sm transition-colors duration-500 hover:bg-accent-soft ${
+                onLight ? 'text-black/60 hover:text-black' : 'text-muted hover:text-ink'
+              }`}
             >
               {l.label}
             </a>
@@ -76,7 +123,9 @@ export function Nav() {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
-            className="grid size-10 shrink-0 place-items-center rounded-full border border-line bg-bg/80 text-ink backdrop-blur transition-colors hover:border-accent/60 md:hidden"
+            className={`grid size-10 shrink-0 place-items-center rounded-full border backdrop-blur transition-colors duration-500 hover:border-accent/60 md:hidden ${
+              onLight ? 'border-black/15 bg-white/70 text-black' : 'border-line bg-bg/80 text-ink'
+            }`}
           >
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
               {open ? (
