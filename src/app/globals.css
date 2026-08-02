@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@import "@fontsource-variable/jetbrains-mono";
+
+/*
+  Design tokens.
+  Radius system: buttons/pills = full, cards/panels = 16px (rounded-2xl), inputs = 8px (rounded-lg).
+  Accent is locked page-wide to amber hsl(28 100% 55%).
+*/
+@theme {
+  --color-bg: hsl(20 10% 5%);
+  --color-surface: hsl(20 9% 7.5%);
+  --color-raised: hsl(22 9% 10%);
+  --color-ink: hsl(32 24% 93%);
+  --color-muted: hsl(28 7% 58%);
+  --color-faint: hsl(26 6% 40%);
+  --color-line: hsl(24 9% 15%);
+  --color-accent: hsl(28 100% 55%);
+  --color-accent-soft: hsl(28 100% 55% / 0.12);
+
+  --font-sans: "General Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: hsl(28 100% 55% / 0.3);
+}
+
+/* Scroll reveal (IntersectionObserver toggles .is-inview) */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  [data-reveal].is-inview {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Masked hero lines */
+  .mask-line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.08em;
+  }
+  .mask-line > span {
+    display: block;
+    transform: translateY(110%);
+  }
+
+  .marquee-track {
+    animation: marquee 36s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mask-line > span {
+    transform: none !important;
+  }
+  .marquee-track {
+    transform: none;
+  }
+}

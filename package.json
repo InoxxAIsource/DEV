@@ -1,0 +1,37 @@
+{
+  "name": "nextbuild",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "seo": "node scripts/gen-seo.mjs",
+    "build": "npm run seo && next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "shot": "node shot.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.25",
+    "lucide-react": "^1.24.0",
+    "next": "^16.2.12",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "26.1.2",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "playwright": "^1.49.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "~5.6.2"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true,
+    "playwright@1.61.1": true,
+    "sharp@0.34.5": true
+  }
+}

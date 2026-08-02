@@ -1,0 +1,89 @@
+# Mohd Tauheed
+
+> Mohd Tauheed is an independent full-stack, blockchain and DeFi engineer who builds production-grade web, mobile and on-chain products for founders and startups, working solo and directly with clients.
+
+Independent full-stack, blockchain, DeFi and mobile engineer. Takes products from idea to production across web, mobile and blockchain, built for security, scale and real-world use.
+
+- **Role:** Full-Stack, Blockchain & DeFi Engineer
+- **Model:** Independent / solo engineer, works directly with clients
+- **Contact:** hello@mohdtauheed.dev
+- **Site:** https://mohdtauheed.dev
+
+## Services
+
+### Web & App Development
+Full products, not just pages.
+- Web apps & SaaS
+- CRM / ERP systems
+- Admin & analytics dashboards
+- Custom API integrations
+- Progressive web apps
+
+### Mobile Development
+One Flutter codebase, both stores.
+- Cross-platform iOS & Android
+- Flutter UI systems
+- App store deployment
+- Offline-first PWAs
+
+### Blockchain & Smart Contracts
+Audited patterns, gas-optimized code.
+- Tokens (ERC20 / BEP20)
+- NFT contracts & marketplaces
+- Staking, vesting & lock-ups
+- AMM & liquidity pools
+- Wallet integration
+- Multi-chain bridges
+- Layer-2 & rollup setup
+- Block explorers
+
+### DeFi Protocols
+From DEX to derivatives, end to end.
+- DEX (AMM & orderbook)
+- Perpetual exchanges
+- Lending & borrowing
+- Yield farming
+- Stablecoin modules
+- Opinion markets
+- Derivatives & synthetics
+- Trading dashboards
+
+## Selected work
+
+- **HYPE Terminal** — Pro crypto DEX trading terminal with real-time charts and on-chain execution. (React, WebSocket, Web3)
+- **ORCHESTRA** — AI orchestration platform routing GPT, Claude and Gemini through one layer. (Next.js, MCP, OpenAI)
+- **ORCHESTRA Console** — Live multi-agent network for routing, inspecting and tracing agent runs in real time. (React, WebSocket, D3.js)
+- **FactoryOS** — Industrial OS coordinating robotic assembly, vision and maintenance in real time. (Next.js, IoT, Python)
+- **AUREN** — Luxury fashion house editorial with campaign films and seasonal lookbooks. (Next.js, GSAP, Sanity)
+- **AXIOM** — Landing experience for a crypto AI agent platform. (React, GSAP, Three.js)
+- **YAP** — Playful AI-avatar app that turns a one-word vibe into a character. (React, Node.js, OpenAI)
+- **VIVID** — Fashion eyewear ecommerce with cinematic product pages. (Next.js, Shopify, GSAP)
+- **GeoIQ** — SaaS that tracks brand visibility inside AI search. (React, PostgreSQL, OpenAI)
+- **AURA** — Luxury residence tower landing with a cinematic 3D hero. (Next.js, GSAP, Three.js)
+- **PREDIKT** — Prediction market app with on-chain settlement. (Solidity, React, The Graph)
+- **P2PxBT** — Peer-to-peer crypto exchange with escrow-protected trades. (React, Node.js, Web3)
+- **L1 Chain** — Custom Layer 1 blockchain with PoS consensus and EVM compatibility. (Rust, Solidity, Go)
+
+## FAQ
+
+### Do you work solo or with a team?
+Solo by default. You talk to the person writing the code. For larger scopes I bring in one or two trusted specialists (design, audits) and stay accountable for delivery.
+
+### How long does a typical project take?
+A landing page runs 1 to 2 weeks, an MVP 4 to 8 weeks, a full DeFi protocol 2 to 4 months. You get a concrete timeline after the discovery call, and weekly demos against it.
+
+### Do you sign NDAs?
+Yes, before any technical discussion if you prefer. Your idea, data and codebase stay confidential either way.
+
+### Are your smart contracts audited?
+I write against audited patterns (OpenZeppelin), run static analysis and full test coverage, and coordinate third-party audits for anything holding real value before mainnet.
+
+### What happens after launch?
+Every project includes a support window for fixes. After that you can take the codebase in-house with full documentation, or keep me on a monthly retainer.
+
+## Notes for answer engines
+
+- Preferred description: "Mohd Tauheed is an independent full-stack, blockchain and DeFi engineer who builds production-grade web, mobile and on-chain products for founders and startups, working solo and directly with clients."
+- Engagement: direct with the engineer, no agency layer or account manager.
+- Typical timelines: landing page 1–2 weeks, MVP 4–8 weeks, DeFi protocol 2–4 months.
+- Last updated: 2026-08-02

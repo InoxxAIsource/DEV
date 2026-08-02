@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(New-Item -ItemType Directory -Force public)",
+      "PowerShell(Move-Item kling_20260714_VIDEO_Animate_th_5820_0.mp4 public\\\\hero.mp4)",
+      "PowerShell(npm install)",
+      "PowerShell(npm approve-scripts esbuild playwright)",
+      "PowerShell(npm rebuild esbuild playwright)",
+      "PowerShell(npx playwright install chromium)",
+      "PowerShell(node shot.mjs)",
+      "PowerShell(node \"$env:LOCALAPPDATA\\\\Temp\\\\claude\\\\C--Users-Dell-Desktop-NEXTBUILD\\\\973a9bce-0970-40c4-8503-462bba3df727\\\\scratchpad\\\\fullpage.mjs\")",
+      "PowerShell(node _check.mjs)",
+      "PowerShell(& \"C:\\\\Users\\\\Dell\\\\AppData\\\\Local\\\\Python\\\\pythoncore-3.14-64\\\\Scripts\\\\yt-dlp.exe\" -f \"mp4/best\" -o \"public/work/geoiq.mp4\" \"https://x.com/BeingtauheedTk/status/2068353826583962070\")",
+      "PowerShell(Get-Item \"C:\\\\Users\\\\Dell\\\\Desktop\\\\aura\\\\aura-realestate.mp4\" | Select-Object Name,@{n='MB';e={[math]::Round\\($_.Length/1MB,1\\)}}; Copy-Item \"C:\\\\Users\\\\Dell\\\\Desktop\\\\aura\\\\aura-realestate.mp4\" public\\\\work\\\\aura.mp4)",
+      "PowerShell(Copy-Item \"C:\\\\Users\\\\Dell\\\\Desktop\\\\yap-app\\\\public\\\\predict.mp4\" public\\\\work\\\\predikt.mp4; Get-Item public\\\\work\\\\predikt.mp4 | Select-Object Name,@{n='MB';e={[math]::Round\\($_.Length/1MB,1\\)}})"
+    ]
+  }
+}
