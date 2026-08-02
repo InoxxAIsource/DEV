@@ -11,42 +11,89 @@ Independent full-stack, blockchain, DeFi and mobile engineer. Takes products fro
 
 ## Services
 
-### Web & App Development
+### Full-Stack Development
 Full products, not just pages.
-- Web apps & SaaS
+- Websites, web apps, static sites
+- SaaS platforms
 - CRM / ERP systems
-- Admin & analytics dashboards
+- Admin dashboards
 - Custom API integrations
-- Progressive web apps
-
-### Mobile Development
-One Flutter codebase, both stores.
-- Cross-platform iOS & Android
-- Flutter UI systems
-- App store deployment
-- Offline-first PWAs
+- Mobile-friendly PWA apps
 
 ### Blockchain & Smart Contracts
 Audited patterns, gas-optimized code.
-- Tokens (ERC20 / BEP20)
-- NFT contracts & marketplaces
-- Staking, vesting & lock-ups
-- AMM & liquidity pools
-- Wallet integration
+- Token development (ERC20, BEP20)
+- NFT smart contracts & marketplaces
+- Smart contracts for games
+- Staking contracts
+- Vesting & lockup contracts
+- Liquidity pool + AMM contracts
+- Custom wallet integration
 - Multi-chain bridges
-- Layer-2 & rollup setup
-- Block explorers
+- Layer-2 / rollup chain setup
+- Custom block explorer
 
-### DeFi Protocols
+### DeFi Protocol Development
 From DEX to derivatives, end to end.
-- DEX (AMM & orderbook)
-- Perpetual exchanges
-- Lending & borrowing
-- Yield farming
+- DEX (AMM / orderbook)
+- Perp exchange
+- Lending / borrowing protocol
+- Yield farming systems
 - Stablecoin modules
-- Opinion markets
-- Derivatives & synthetics
+- Opinion markets (yes/no markets)
+- Derivatives & synthetic assets
+- Liquidity mining UI
 - Trading dashboards
+
+### Tokenization & RWA Systems
+Real-world assets, brought on-chain.
+- Real estate tokenization
+- RWA onboarding dashboard
+- Fractional ownership engine
+- Rent distribution automation
+- SPV / trust deed logic
+- Tokenized marketplace
+- KYC-gated asset access
+
+### P2P Platforms
+Escrow-protected trading at scale.
+- Crypto P2P exchange (Binance-style)
+- Escrow-based P2P trading
+- Stablecoin P2P desk
+- KYC / verification module
+- Automated dispute resolution
+
+### AI Development
+Agents that do real work.
+- AI chatbots
+- AI trading / portfolio agents
+- AI research assistants
+- AI CRM and support agents
+- AI automation tools
+- Price prediction models
+- AI-powered dashboards
+
+### Payments & Finance Automation
+Fiat and crypto, one flow.
+- Stripe, Razorpay, PayPal integration
+- Fiat-to-crypto flow
+- Subscription billing
+- Micro-payments
+- Pay-per-use credit wallet
+
+### Marketplace Development
+Two-sided platforms that transact.
+- NFT marketplace
+- Service / task marketplace (Fiverr-style)
+- Tokenized asset marketplace
+- P2P item buy/sell apps
+
+### DAO & Governance
+On-chain decisions, transparent treasury.
+- Governance token
+- Voting dashboard
+- On-chain proposals
+- Treasury dashboard
 
 ## Selected work
 
