@@ -1,14 +1,15 @@
 /*
-  The three featured experiences.
+  Every project is a world.
 
-  Each carries its own palette. FeaturedWork drives a fixed backdrop layer that
-  interpolates between `theme.bg` values as you scroll, so moving from one
-  project to the next reads as entering a different product rather than
-  scrolling a list. `ink`/`muted`/`line`/`accent` are applied as CSS custom
-  properties on the section, so type and rules re-tune per world.
+  Palettes were sampled from each recording's poster frame (average colour for
+  the world, most-saturated legible pixel for the accent) then hand-tuned where
+  the sample was too dark or desaturated to read as type.
 
-  AUREN is deliberately light — the real product is an ivory editorial, and the
-  contrast against the dark shell is the point.
+  Light and dark worlds alternate so the run has rhythm rather than fourteen
+  variations of the same darkness. `light: true` tells the nav to invert.
+
+  FeaturedWork interpolates a fixed backdrop across theme.bg, so crossing from
+  one project to the next reads as entering a different product.
 */
 
 export type Theme = {
@@ -18,7 +19,6 @@ export type Theme = {
   line: string
   accent: string
   onAccent: string
-  /* Nav inverts over light worlds so it stays legible. */
   light?: boolean
 }
 
@@ -38,6 +38,26 @@ export type Featured = {
   theme: Theme
 }
 
+/* Two bases keep contrast honest without writing six values fourteen times. */
+const dark = (bg: string, line: string, accent: string): Theme => ({
+  bg,
+  ink: 'hsl(210 30% 96%)',
+  muted: 'hsl(212 14% 62%)',
+  line,
+  accent,
+  onAccent: bg,
+})
+
+const light = (bg: string, line: string, accent: string, onAccent = bg): Theme => ({
+  bg,
+  ink: 'hsl(220 18% 10%)',
+  muted: 'hsl(220 8% 38%)',
+  line,
+  accent,
+  onAccent,
+  light: true,
+})
+
 export const featured: Featured[] = [
   {
     slug: 'factoryos',
@@ -52,14 +72,7 @@ export const featured: Featured[] = [
     tech: ['Next.js', 'IoT', 'Python', 'WebSocket'],
     media: '/work/factory-os.mp4',
     poster: '/posters/factory-os.jpg',
-    theme: {
-      bg: 'hsl(213 44% 7%)',
-      ink: 'hsl(210 30% 96%)',
-      muted: 'hsl(211 18% 64%)',
-      line: 'hsl(211 30% 18%)',
-      accent: 'hsl(203 92% 62%)',
-      onAccent: 'hsl(213 44% 7%)',
-    },
+    theme: dark('hsl(213 44% 7%)', 'hsl(211 30% 18%)', 'hsl(203 92% 62%)'),
   },
   {
     slug: 'auren',
@@ -75,13 +88,9 @@ export const featured: Featured[] = [
     media: '/work/auren.mp4',
     poster: '/posters/auren.jpg',
     theme: {
-      bg: 'hsl(38 26% 91%)',
+      ...light('hsl(38 26% 91%)', 'hsl(34 18% 80%)', 'hsl(24 48% 38%)', 'hsl(38 26% 95%)'),
       ink: 'hsl(28 16% 11%)',
       muted: 'hsl(30 10% 38%)',
-      line: 'hsl(34 18% 80%)',
-      accent: 'hsl(24 48% 38%)',
-      onAccent: 'hsl(38 26% 95%)',
-      light: true,
     },
   },
   {
@@ -97,18 +106,176 @@ export const featured: Featured[] = [
     tech: ['React', 'WebSocket', 'Python', 'AI'],
     media: '/work/quantos.mp4',
     poster: '/posters/quantos.jpg',
-    theme: {
-      bg: 'hsl(222 47% 6%)',
-      ink: 'hsl(210 32% 96%)',
-      muted: 'hsl(215 18% 62%)',
-      line: 'hsl(219 34% 17%)',
-      accent: 'hsl(158 64% 52%)',
-      onAccent: 'hsl(222 47% 6%)',
-    },
+    theme: dark('hsl(222 47% 6%)', 'hsl(219 34% 17%)', 'hsl(158 64% 52%)'),
+  },
+  {
+    slug: 'orchestra-console',
+    index: '04',
+    name: 'ORCHESTRA Console',
+    tagline: 'Mission control for a fleet of agents.',
+    story:
+      'A live orchestration network rendered as a graph: agents route work between each other while an operator watches reasoning traces, token throughput and memory pressure resolve in real time. Debugging a swarm, made legible.',
+    role: 'Product Design & Frontend',
+    industry: 'AI Infrastructure',
+    year: '2026',
+    tech: ['React', 'WebSocket', 'D3.js'],
+    media: '/work/ai-orchestra.mp4',
+    poster: '/posters/ai-orchestra.jpg',
+    theme: light('hsl(220 30% 96%)', 'hsl(220 18% 86%)', 'hsl(266 72% 56%)', 'hsl(220 30% 98%)'),
+  },
+  {
+    slug: 'hype-terminal',
+    index: '05',
+    name: 'HYPE Terminal',
+    tagline: 'A trading desk that fits in a tab.',
+    story:
+      'Depth-of-book, funding, liquidation distance and open positions on one screen, streaming without a reload. Built for traders who keep eleven numbers in their head and want all of them visible at once.',
+    role: 'Product Design & Full-Stack',
+    industry: 'Crypto Derivatives',
+    year: '2026',
+    tech: ['React', 'WebSocket', 'Web3'],
+    media: '/work/terminal.mp4',
+    poster: '/posters/terminal.jpg',
+    theme: dark('hsl(203 30% 7%)', 'hsl(203 24% 17%)', 'hsl(168 76% 48%)'),
+  },
+  {
+    slug: 'geoiq',
+    index: '06',
+    name: 'GeoIQ',
+    tagline: 'Find out what AI says about you.',
+    story:
+      'Brands can no longer see how they are described inside AI search. GeoIQ probes the models directly, scores visibility against competitors, and shows which sources the answers are actually drawn from.',
+    role: 'Product Design & Full-Stack',
+    industry: 'Marketing Intelligence',
+    year: '2025',
+    tech: ['React', 'PostgreSQL', 'OpenAI'],
+    media: '/work/geoiq.mp4',
+    poster: '/posters/geoiq.jpg',
+    theme: light('hsl(266 26% 96%)', 'hsl(266 16% 87%)', 'hsl(255 88% 62%)', 'hsl(266 26% 98%)'),
+  },
+  {
+    slug: 'orchestra',
+    index: '07',
+    name: 'ORCHESTRA',
+    tagline: 'Orchestrate every AI. One platform.',
+    story:
+      'GPT, Claude, Gemini, Grok and DeepSeek behind a single routing layer, with MCP servers, vector memory and the tools a company already runs wired in underneath. One integration instead of nine.',
+    role: 'Design & Full-Stack Engineering',
+    industry: 'AI Infrastructure',
+    year: '2026',
+    tech: ['Next.js', 'MCP', 'OpenAI'],
+    media: '/work/orchestr.mp4',
+    poster: '/posters/orchestr.jpg',
+    theme: dark('hsl(232 38% 8%)', 'hsl(232 28% 19%)', 'hsl(212 96% 68%)'),
+  },
+  {
+    slug: 'p2pxbt',
+    index: '08',
+    name: 'P2PxBT',
+    tagline: 'Peer to peer, escrow protected.',
+    story:
+      'A P2P exchange where the escrow, the dispute path and the verification tiers are the product. Traders match on their own terms; the platform only holds the middle and settles it when both sides are satisfied.',
+    role: 'Design & Full-Stack Engineering',
+    industry: 'Crypto Exchange',
+    year: '2025',
+    tech: ['React', 'Node.js', 'Web3'],
+    media: '/work/p2p.mp4',
+    poster: '/posters/p2p.jpg',
+    theme: light('hsl(216 44% 96%)', 'hsl(216 24% 86%)', 'hsl(216 92% 52%)', 'hsl(216 44% 98%)'),
+  },
+  {
+    slug: 'axiom',
+    index: '09',
+    name: 'AXIOM',
+    tagline: 'Autonomous execution. Your guardrails.',
+    story:
+      'A crypto agent that watches every market you trade, reasons in the open, and executes strategy strictly inside the limits you set on-chain. The landing had to make autonomy feel accountable rather than reckless.',
+    role: 'Art Direction & Frontend',
+    industry: 'Crypto AI Agents',
+    year: '2025',
+    tech: ['React', 'GSAP', 'Three.js'],
+    media: '/work/axiom.mp4',
+    poster: '/posters/axiom.jpg',
+    theme: dark('hsl(150 18% 6%)', 'hsl(150 16% 16%)', 'hsl(96 76% 58%)'),
+  },
+  {
+    slug: 'vivid',
+    index: '10',
+    name: 'VIVID',
+    tagline: 'See louder.',
+    story:
+      'Eyewear sold on attitude. Full-bleed campaign photography, colourway switching that recolours the frame in place, and product pages built to be scrolled like a magazine rather than a catalogue.',
+    role: 'Art Direction & Frontend',
+    industry: 'Fashion Ecommerce',
+    year: '2025',
+    tech: ['Next.js', 'Shopify', 'GSAP'],
+    media: '/work/vivid.mp4',
+    poster: '/posters/vivid.jpg',
+    theme: light('hsl(34 34% 93%)', 'hsl(30 20% 82%)', 'hsl(20 86% 46%)', 'hsl(34 34% 97%)'),
+  },
+  {
+    slug: 'l1-chain',
+    index: '11',
+    name: 'L1 Chain',
+    tagline: 'Ethereum, at warp speed.',
+    story:
+      'A zk-rollup settling to Ethereum with sub-second confirmations and fees under a tenth of a cent. Fully EVM equivalent, so existing contracts deploy unchanged and the tooling a team already uses works on day one.',
+    role: 'Protocol & Full-Stack Engineering',
+    industry: 'Blockchain Infrastructure',
+    year: '2025',
+    tech: ['Rust', 'Solidity', 'Go'],
+    media: '/work/l1.mp4',
+    poster: '/posters/l1.jpg',
+    theme: dark('hsl(206 62% 8%)', 'hsl(206 42% 19%)', 'hsl(196 96% 58%)'),
+  },
+  {
+    slug: 'yap',
+    index: '12',
+    name: 'YAP',
+    tagline: 'Your face, but it yaps.',
+    story:
+      'Type one word, get a 3D character that talks, lip-syncs and reacts. No rigging, no mocap, no prompt engineering — the whole product is a single input box and a result worth sending to a friend.',
+    role: 'Design & Full-Stack Engineering',
+    industry: 'Consumer AI',
+    year: '2025',
+    tech: ['React', 'Node.js', 'OpenAI'],
+    media: '/work/yap.mp4',
+    poster: '/posters/yap.jpg',
+    theme: light('hsl(40 42% 94%)', 'hsl(36 22% 84%)', 'hsl(324 88% 52%)', 'hsl(40 42% 98%)'),
+  },
+  {
+    slug: 'predikt',
+    index: '13',
+    name: 'PREDIKT',
+    tagline: 'Markets for what happens next.',
+    story:
+      'A prediction market where positions settle on-chain and the odds are just the order book read back to you. The interface had to make an unfamiliar instrument feel as ordinary as placing a limit order.',
+    role: 'Design & Full-Stack Engineering',
+    industry: 'Prediction Markets',
+    year: '2025',
+    tech: ['Solidity', 'React', 'The Graph'],
+    media: '/work/predikt.mp4',
+    poster: '/posters/predikt.jpg',
+    theme: dark('hsl(258 34% 9%)', 'hsl(258 26% 20%)', 'hsl(266 88% 70%)'),
+  },
+  {
+    slug: 'aura',
+    index: '14',
+    name: 'AURA',
+    tagline: 'A tower, told cinematically.',
+    story:
+      'Luxury residences sold before they exist. A 3D hero that moves like an establishing shot, floor plates you can walk, and a reveal sequence paced so the building arrives before the price does.',
+    role: 'Art Direction & Frontend',
+    industry: 'Luxury Real Estate',
+    year: '2025',
+    tech: ['Next.js', 'GSAP', 'Three.js'],
+    media: '/work/aura.mp4',
+    poster: '/posters/aura.jpg',
+    theme: dark('hsl(28 32% 8%)', 'hsl(28 24% 19%)', 'hsl(36 88% 60%)'),
   },
 ]
 
-/* The shell either side of the featured run — hero, studio intro, archive. */
+/* The shell either side of the featured run. */
 export const shellTheme: Theme = {
   bg: 'hsl(20 10% 5%)',
   ink: 'hsl(32 24% 93%)',

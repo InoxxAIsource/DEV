@@ -2,7 +2,6 @@ import { Nav } from '@/components/Nav'
 import { Hero } from '@/components/Hero'
 import { StudioIntro } from '@/components/StudioIntro'
 import { FeaturedWork } from '@/components/FeaturedWork'
-import { ProjectArchive } from '@/components/ProjectArchive'
 import { Process } from '@/components/Process'
 import { Testimonials } from '@/components/Testimonials'
 import { Services } from '@/components/Services'
@@ -13,8 +12,8 @@ import { Cursor } from '@/components/Cursor'
 
 /*
   Scroll story:
-    Hero -> Studio intro -> 01 FactoryOS -> 02 AUREN -> 03 QuantOS
-    -> Archive -> Process -> Testimonials -> Services -> FAQ -> Contact
+    Hero -> Studio intro -> 14 project worlds -> Process -> Testimonials
+    -> Services -> FAQ -> Contact
 
   Services and FAQ sit after the narrative rather than inside it: they carry
   the OfferCatalog and FAQPage structured data, so removing them from the page
@@ -31,7 +30,6 @@ export default function Home() {
         <Hero />
         <StudioIntro />
         <FeaturedWork />
-        <ProjectArchive />
         <Process />
         <Testimonials />
         <Services />

@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, type CSSProperties, type PointerEvent } from 'react'
+import { useRef, useState, useEffect, type CSSProperties, type PointerEvent } from 'react'
 import {
   motion,
   useScroll,
@@ -24,7 +24,15 @@ function themeVars(p: Featured): CSSProperties {
   } as CSSProperties
 }
 
-export function FeaturedProject({ project, flip }: { project: Featured; flip: boolean }) {
+export function FeaturedProject({
+  project,
+  flip,
+  onActive,
+}: {
+  project: Featured
+  flip: boolean
+  onActive: (color: string | null) => void
+}) {
   const root = useRef<HTMLElement>(null)
   const reduce = useReducedMotion()
 
@@ -60,6 +68,52 @@ export function FeaturedProject({ project, flip }: { project: Featured; flip: bo
     py.set(0)
   }
 
+  /*
+    Fourteen autoplaying clips would saturate the network and the decoder, so
+    src lands only when the project nears the viewport and playback pauses once
+    it leaves. The poster carries the frame until then, which also means no
+    layout shift. `armed` starts false on both server and client, so hydration
+    is unaffected.
+  */
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [armed, setArmed] = useState(false)
+
+  useEffect(() => {
+    const el = videoRef.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setArmed(true)
+          el.play().catch(() => {})
+        } else {
+          el.pause()
+        }
+      },
+      { rootMargin: '400px 0px' },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
+  /*
+    Claim the backdrop while this section owns the middle of the viewport.
+    rootMargin collapses the root to a band around the centre line, so exactly
+    one section is active at a time and the handover lands mid-gap.
+  */
+  useEffect(() => {
+    const el = root.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) onActive(project.theme.bg)
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [onActive, project.theme.bg])
+
   return (
     <section
       ref={root}
@@ -89,7 +143,8 @@ export function FeaturedProject({ project, flip }: { project: Featured; flip: bo
             className="group relative overflow-hidden rounded-[14px] border border-[color:var(--p-line)] shadow-[0_40px_90px_-40px_hsl(0_0%_0%/0.65)] will-change-transform"
           >
             <video
-              src={project.media}
+              ref={videoRef}
+              src={armed ? project.media : undefined}
               poster={project.poster}
               muted
               loop
