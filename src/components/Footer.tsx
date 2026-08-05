@@ -1,4 +1,5 @@
 import { BrandIcon, socials } from './socials'
+import { Wordmark } from './Wordmark'
 
 export function Footer() {
   return (
@@ -6,9 +7,7 @@ export function Footer() {
       <div className="mx-auto max-w-[1400px] px-5 py-14 md:px-10">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div>
-            <div className="grid size-10 place-items-center rounded-full border border-line font-mono text-sm font-bold">
-              MT
-            </div>
+            <Wordmark className="text-[22px] text-ink" />
             <p className="mt-4 max-w-xs text-sm text-muted">
               AI engineering studio. AI products, SaaS platforms and automation systems, built
               to production standard.

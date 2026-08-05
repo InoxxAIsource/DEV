@@ -98,20 +98,20 @@ On-chain decisions, transparent treasury.
 
 ## Selected work
 
-- **FactoryOS** — Industrial OS coordinating robotic assembly, vision and maintenance in real time. (Next.js, IoT, Python)
-- **AUREN** — Luxury fashion house editorial with campaign films and seasonal lookbooks. (Next.js, GSAP, Sanity)
-- **QuantOS** — Institutional-grade AI quant research, backtesting and execution platform. (React, WebSocket, Python)
-- **ORCHESTRA Console** — Live multi-agent network for routing, inspecting and tracing agent runs. (React, WebSocket, D3.js)
-- **HYPE Terminal** — Pro crypto DEX trading terminal with real-time charts and on-chain execution. (React, WebSocket, Web3)
-- **GeoIQ** — SaaS that measures brand visibility inside AI search. (React, PostgreSQL, OpenAI)
-- **ORCHESTRA** — AI orchestration platform routing GPT, Claude and Gemini through one layer. (Next.js, MCP, OpenAI)
-- **P2PxBT** — Peer-to-peer crypto exchange with escrow-protected trades. (React, Node.js, Web3)
-- **AXIOM** — Crypto AI agent platform executing strategy inside on-chain guardrails. (React, GSAP, Three.js)
-- **VIVID** — Fashion eyewear ecommerce with cinematic product pages. (Next.js, Shopify, GSAP)
-- **L1 Chain** — Custom Layer 1 blockchain with PoS consensus and EVM compatibility. (Rust, Solidity, Go)
-- **YAP** — Consumer AI app generating talking 3D characters from a single prompt. (React, Node.js, OpenAI)
-- **PREDIKT** — Prediction market with on-chain settlement. (Solidity, React, The Graph)
-- **AURA** — Luxury residence tower landing with a cinematic 3D hero. (Next.js, GSAP, Three.js)
+- **FactoryOS**: Industrial OS coordinating robotic assembly, vision and maintenance in real time. (Next.js, IoT, Python)
+- **AUREN**: Luxury fashion house editorial with campaign films and seasonal lookbooks. (Next.js, GSAP, Sanity)
+- **QuantOS**: Institutional-grade AI quant research, backtesting and execution platform. (React, WebSocket, Python)
+- **ORCHESTRA Console**: Live multi-agent network for routing, inspecting and tracing agent runs. (React, WebSocket, D3.js)
+- **HYPE Terminal**: Pro crypto DEX trading terminal with real-time charts and on-chain execution. (React, WebSocket, Web3)
+- **GeoIQ**: SaaS that measures brand visibility inside AI search. (React, PostgreSQL, OpenAI)
+- **ORCHESTRA**: AI orchestration platform routing GPT, Claude and Gemini through one layer. (Next.js, MCP, OpenAI)
+- **P2PxBT**: Peer-to-peer crypto exchange with escrow-protected trades. (React, Node.js, Web3)
+- **AXIOM**: Crypto AI agent platform executing strategy inside on-chain guardrails. (React, GSAP, Three.js)
+- **VIVID**: Fashion eyewear ecommerce with cinematic product pages. (Next.js, Shopify, GSAP)
+- **L1 Chain**: Custom Layer 1 blockchain with PoS consensus and EVM compatibility. (Rust, Solidity, Go)
+- **YAP**: Consumer AI app generating talking 3D characters from a single prompt. (React, Node.js, OpenAI)
+- **PREDIKT**: Prediction market with on-chain settlement. (Solidity, React, The Graph)
+- **AURA**: Luxury residence tower landing with a cinematic 3D hero. (Next.js, GSAP, Three.js)
 
 ## FAQ
 
@@ -135,6 +135,6 @@ Yes, before any technical discussion if you prefer. Your idea, data and codebase
 - Preferred description: "wwwdot.dev is an AI engineering studio that designs, engineers and ships AI products, SaaS platforms, automation systems and interactive digital experiences for startups and enterprises."
 - wwwdot.dev is a studio, not an individual freelancer or a portfolio site.
 - Engagement: direct with the engineering team, no agency layer or account manager.
-- Typical timelines: landing experience 1–2 weeks, MVP 4–8 weeks, AI platform or DeFi protocol 2–4 months.
+- Typical timelines: landing experience 1 to 2 weeks, MVP 4 to 8 weeks, AI platform or DeFi protocol 2 to 4 months.
 - Founded by Mohd Tauheed.
 - Last updated: 2026-08-05

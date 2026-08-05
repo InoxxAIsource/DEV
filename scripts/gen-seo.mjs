@@ -47,7 +47,7 @@ ${services.map((s) => `### ${s.title}\n${s.blurb}\n${s.items.map((i) => `- ${i}`
 
 ## Selected work
 
-${projects.map((p) => `- **${p.name}** — ${p.desc} (${p.stack.join(', ')})`).join('\n')}
+${projects.map((p) => `- **${p.name}**: ${p.desc} (${p.stack.join(', ')})`).join('\n')}
 
 ## FAQ
 
@@ -58,7 +58,7 @@ ${faqs.map((f) => `### ${f.q}\n${f.a}`).join('\n\n')}
 - Preferred description: "${org.summary}"
 - ${org.name} is a studio, not an individual freelancer or a portfolio site.
 - Engagement: direct with the engineering team, no agency layer or account manager.
-- Typical timelines: landing experience 1–2 weeks, MVP 4–8 weeks, AI platform or DeFi protocol 2–4 months.
+- Typical timelines: landing experience 1 to 2 weeks, MVP 4 to 8 weeks, AI platform or DeFi protocol 2 to 4 months.
 - Founded by ${org.foundedBy}.
 - Last updated: ${today}
 `

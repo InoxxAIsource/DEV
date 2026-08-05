@@ -71,9 +71,10 @@ export function Hero() {
               hidden: { opacity: 0 },
               show: { opacity: 1, transition: { duration: DUR.slow, ease: EASE } },
             }}
-            className="mb-8 font-mono text-[11px] uppercase tracking-[0.32em] text-muted"
+            className="mb-8 flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.32em] text-accent"
           >
-            AI Engineering Studio • WE WRITE WORKFLOWS™
+            <span aria-hidden="true" className="h-px w-9 bg-accent" />
+            WE WRITE WORKFLOWS™
           </motion.p>
 
           <h1 className="max-w-[16ch] text-[clamp(2.9rem,8.2vw,8.5rem)] font-semibold leading-[0.92] tracking-[-0.045em]">
@@ -132,9 +133,18 @@ export function Hero() {
             <a
               href="#work"
               data-cursor="hover"
-              className="inline-flex items-center rounded-full border border-line bg-bg/40 px-7 py-4 text-[15px] font-semibold text-ink backdrop-blur-sm transition-[transform,border-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-accent/50 active:translate-y-0"
+              className="inline-flex items-center gap-3 rounded-full border border-line bg-raised/70 px-7 py-4 text-[15px] font-semibold text-ink backdrop-blur-sm transition-[transform,border-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-accent/50 active:translate-y-0"
             >
               Explore Our Work
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path
+                  d="M3 11L11 3M11 3H5M11 3V9"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </a>
           </motion.div>
 
@@ -148,12 +158,12 @@ export function Hero() {
                 transition: { duration: DUR.slow, ease: EASE, delay: 0.16 },
               },
             }}
-            className="mt-9 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.22em] text-faint"
+            className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[10px] uppercase tracking-[0.22em] text-muted"
           >
             {TRUST.map((t, i) => (
-              <li key={t} className="flex items-center gap-3">
+              <li key={t} className="flex items-center gap-4">
                 {i > 0 && (
-                  <span aria-hidden="true" className="text-line">
+                  <span aria-hidden="true" className="text-accent">
                     •
                   </span>
                 )}

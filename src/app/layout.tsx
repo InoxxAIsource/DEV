@@ -5,7 +5,7 @@ import { SITE_URL, org } from '@/data/site'
 import { jsonLdGraph } from '@/lib/schema'
 import { SmoothScroll } from '@/components/SmoothScroll'
 
-const title = `${org.name} — ${org.kind}`
+const title = `${org.name} | ${org.kind}`
 
 /*
   Next's Metadata API replaces the static tags the Vite build injected into

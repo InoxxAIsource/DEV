@@ -47,7 +47,7 @@ export function StudioIntro() {
             className="mt-12 max-w-[46ch] text-lg leading-relaxed text-muted md:text-xl"
           >
             We are an AI engineering studio. We partner directly with product and founding
-            teams — no agency layer, no account manager, no handoff between the people who
+            teams. No agency layer, no account manager, no handoff between the people who
             architect a system and the people who ship it. Discovery to production, owned end
             to end.
           </motion.p>

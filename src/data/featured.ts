@@ -80,7 +80,7 @@ export const featured: Featured[] = [
     name: 'AUREN',
     tagline: "Luxury isn't loud. It's remembered.",
     story:
-      'A fashion house presented as an editorial, not a storefront. Campaign films, seasonal lookbooks and craft stories carry the weight, with restraint doing the selling — the quietest surface in the portfolio and the most deliberate.',
+      'A fashion house presented as an editorial, not a storefront. Campaign films, seasonal lookbooks and craft stories carry the weight, with restraint doing the selling. The quietest surface in the portfolio and the most deliberate.',
     role: 'Art Direction & Frontend',
     industry: 'Luxury Fashion',
     year: '2026',
@@ -234,7 +234,7 @@ export const featured: Featured[] = [
     name: 'YAP',
     tagline: 'Your face, but it yaps.',
     story:
-      'Type one word, get a 3D character that talks, lip-syncs and reacts. No rigging, no mocap, no prompt engineering — the whole product is a single input box and a result worth sending to a friend.',
+      'Type one word, get a 3D character that talks, lip-syncs and reacts. No rigging, no mocap, no prompt engineering. The whole product is a single input box and a result worth sending to a friend.',
     role: 'Design & Full-Stack Engineering',
     industry: 'Consumer AI',
     year: '2025',

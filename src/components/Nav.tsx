@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { Wordmark } from './Wordmark'
 
 const links = [
   { label: 'Work', href: '#work' },
@@ -8,6 +9,8 @@ const links = [
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ]
+
+const TAGLINE = 'AI Engineering Studio • WE WRITE WORKFLOWS™'
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -59,7 +62,7 @@ export function Nav() {
     }
   }, [])
 
-  /* close on Escape, and lock scroll while the drawer is open */
+  /* Escape closes the drawer; scroll locks while it is open. */
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
@@ -72,36 +75,42 @@ export function Nav() {
     }
   }, [open])
 
+  const ink = onLight ? 'text-black' : 'text-ink'
+  const rule = onLight ? 'bg-black/15' : 'bg-line'
+  const dim = onLight ? 'text-black/55' : 'text-muted'
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-10">
-        <a
-          href="#"
-          aria-label="Mohd Tauheed, home"
-          className={`grid size-10 place-items-center rounded-full border font-mono text-sm font-bold tracking-tight backdrop-blur transition-colors duration-500 hover:border-accent/60 ${
-            onLight
-              ? 'border-black/15 bg-white/70 text-black'
-              : 'border-line bg-bg/80 text-ink'
-          }`}
-        >
-          MT
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
+        scrolled
+          ? onLight
+            ? 'border-b border-black/10 bg-white/70 backdrop-blur-md'
+            : 'border-b border-line bg-bg/80 backdrop-blur-md'
+          : 'border-b border-transparent'
+      }`}
+    >
+      <div className="mx-auto flex max-w-[1600px] items-center gap-6 px-6 py-5 md:px-12">
+        {/* Brand */}
+        <a href="#" aria-label="wwwdot.dev, home" className={`shrink-0 ${ink}`}>
+          <Wordmark className="text-[22px]" />
         </a>
 
-        <nav
-          className={`hidden items-center gap-1 rounded-full border px-2 py-1.5 backdrop-blur-md transition-all duration-500 md:flex ${
-            onLight
-              ? 'border-black/10 bg-white/70 shadow-[0_8px_30px_hsl(30_10%_40%/0.12)]'
-              : scrolled
-                ? 'border-line bg-raised/85 shadow-[0_8px_30px_hsl(20_10%_2%/0.5)]'
-                : 'border-line/60 bg-bg/40'
-          }`}
+        {/* Positioning line, hidden below xl where the bar gets tight */}
+        <span aria-hidden="true" className={`hidden h-5 w-px shrink-0 xl:block ${rule}`} />
+        <p
+          className={`hidden min-w-0 truncate font-mono text-[11px] uppercase tracking-[0.24em] xl:block ${dim}`}
         >
+          {TAGLINE}
+        </p>
+
+        {/* Links */}
+        <nav className="ml-auto hidden items-center gap-8 md:flex">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className={`rounded-full px-4 py-1.5 text-sm transition-colors duration-500 hover:bg-accent-soft ${
-                onLight ? 'text-black/60 hover:text-black' : 'text-muted hover:text-ink'
+              className={`text-sm transition-colors duration-300 hover:text-accent ${
+                onLight ? 'text-black/70' : 'text-muted'
               }`}
             >
               {l.label}
@@ -109,15 +118,25 @@ export function Nav() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-3 md:ml-0">
           <a
             href="#contact"
-            className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-bg transition-transform hover:brightness-110 active:scale-[0.98] md:px-5"
+            data-cursor="hover"
+            className="group hidden items-center gap-2 rounded-full border border-accent px-5 py-2.5 text-sm font-semibold text-accent transition-[transform,background-color,color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:bg-accent hover:text-bg active:translate-y-0 sm:inline-flex"
           >
-            Start a project
+            Work With Us
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path
+                d="M3 11L11 3M11 3H5M11 3V9"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </a>
 
-          {/* Mobile menu trigger — the nav pill above is desktop-only */}
+          {/* Mobile menu trigger */}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -160,7 +179,7 @@ export function Nav() {
           }`}
         />
         <nav
-          className={`mx-5 origin-top rounded-2xl border border-line bg-raised/95 p-2 shadow-[0_20px_60px_hsl(20_10%_2%/0.6)] backdrop-blur-md transition-all duration-300 ${
+          className={`mx-6 origin-top rounded-2xl border border-line bg-raised/95 p-2 shadow-[0_20px_60px_hsl(20_10%_2%/0.6)] backdrop-blur-md transition-all duration-300 ${
             open ? 'translate-y-0 opacity-100' : '-translate-y-3 opacity-0'
           }`}
         >
@@ -174,6 +193,13 @@ export function Nav() {
               {l.label}
             </a>
           ))}
+          <a
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="mt-1 block rounded-xl bg-accent px-4 py-3 text-center text-base font-semibold text-bg"
+          >
+            Work With Us
+          </a>
         </nav>
       </div>
     </header>
