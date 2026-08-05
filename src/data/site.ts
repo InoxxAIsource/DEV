@@ -23,7 +23,9 @@ export const SITE_URL = 'https://www.wwwdot.dev'
 export const person = {
   name: 'Mohd Tauheed',
   jobTitle: 'Full-Stack, Blockchain & DeFi Engineer',
-  email: 'hello@mohdtauheed.dev',
+  /* Public address. Route it to your inbox with registrar-level forwarding —
+     the contact form is a mailto: handler, not a server endpoint. */
+  email: 'contact@wwwdot.dev',
   description:
     'Independent full-stack, blockchain, DeFi and mobile engineer. Takes products from idea to production across web, mobile and blockchain, built for security, scale and real-world use.',
   /* One-line answer to "who is Mohd Tauheed?" — the sentence an AI engine is
@@ -53,9 +55,9 @@ export const person = {
   because a wrong sameAs actively damages entity association.
 */
 export const socials = [
-  { label: 'X', href: 'https://x.com/BeingtauheedTk', verified: true },
-  { label: 'GitHub', href: 'https://github.com/', verified: false },
-  { label: 'LinkedIn', href: 'https://linkedin.com/', verified: false },
+  { slug: 'x', label: 'X', href: 'https://x.com/BeingtauheedTk', verified: true },
+  { slug: 'github', label: 'GitHub', href: 'https://github.com/', verified: false },
+  { slug: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/', verified: false },
 ]
 
 /*

@@ -4,8 +4,10 @@ import { useState, type FormEvent } from 'react'
 import { Mail } from 'lucide-react'
 import { Reveal } from '../lib/Reveal'
 import { BrandIcon, socials } from './socials'
+import { person } from '../data/site'
 
-const EMAIL = 'hello@mohdtauheed.dev' /* TODO: replace with real contact email */
+/* Same address the Person schema publishes as mailto: */
+const EMAIL = person.email
 
 const inputCls =
   'w-full rounded-lg border border-line bg-bg px-4 py-3 text-sm text-ink placeholder:text-faint outline-none transition-colors focus:border-accent/60 focus:ring-2 focus:ring-accent/20'
