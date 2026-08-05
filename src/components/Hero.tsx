@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { EASE, DUR, maskLine, stagger } from '@/lib/motion'
 
-const LINES = ['I build digital', 'experiences people', 'remember.']
+const LINES = ['Building AI Products', 'That Scale.']
 
 export function Hero() {
   const root = useRef<HTMLElement>(null)
@@ -63,7 +63,7 @@ export function Hero() {
             }}
             className="mb-10 font-mono text-[11px] uppercase tracking-[0.32em] text-muted"
           >
-            Independent engineer — Web, Blockchain &amp; AI
+            Full-Stack AI Engineering Studio
           </motion.p>
 
           <h1 className="max-w-[16ch] text-[clamp(2.9rem,8.2vw,8.5rem)] font-semibold leading-[0.92] tracking-[-0.045em]">
@@ -79,6 +79,21 @@ export function Hero() {
             ))}
           </h1>
 
+          <motion.p
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              show: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: DUR.slow, ease: EASE, delay: 0.05 },
+              },
+            }}
+            className="mt-8 max-w-[62ch] text-lg leading-relaxed text-muted md:text-xl"
+          >
+            From AI agents and SaaS platforms to enterprise applications, we design and build
+            production-ready software with modern engineering and exceptional user experiences.
+          </motion.p>
+
           <motion.div
             variants={{
               hidden: { opacity: 0, y: 20 },
@@ -88,14 +103,14 @@ export function Hero() {
                 transition: { duration: DUR.slow, ease: EASE, delay: 0.1 },
               },
             }}
-            className="mt-12 flex flex-wrap items-center gap-3"
+            className="mt-11 flex flex-wrap items-center gap-3"
           >
             <a
-              href="#work"
+              href="#contact"
               data-cursor="hover"
               className="group inline-flex items-center gap-3 rounded-full bg-accent px-7 py-4 text-[15px] font-semibold text-bg transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-8px_hsl(28_100%_55%/0.5)] active:translate-y-0"
             >
-              View the work
+              Start Your Project
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path
                   d="M3 11L11 3M11 3H5M11 3V9"
@@ -107,11 +122,11 @@ export function Hero() {
               </svg>
             </a>
             <a
-              href="#contact"
+              href="#work"
               data-cursor="hover"
               className="inline-flex items-center rounded-full border border-line bg-bg/40 px-7 py-4 text-[15px] font-semibold text-ink backdrop-blur-sm transition-[transform,border-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-accent/50 active:translate-y-0"
             >
-              Start a project
+              View Our Work
             </a>
           </motion.div>
         </motion.div>
