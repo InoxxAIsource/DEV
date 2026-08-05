@@ -1,4 +1,4 @@
-# mohdtauheed.dev
+# wwwdot.dev
 
 Personal site for **Mohd Tauheed** — independent full-stack, blockchain, DeFi and mobile engineer.
 

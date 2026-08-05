@@ -13,8 +13,12 @@
   Change a fact here and every artifact regenerates consistently.
 */
 
-/* Swap this one constant when the real domain is registered. */
-export const SITE_URL = 'https://mohdtauheed.dev'
+/*
+  Canonical origin. Vercel 308-redirects the apex to www, so www is the
+  canonical form — canonicals, sitemap entries and JSON-LD @ids must all use it
+  or they point at a redirect.
+*/
+export const SITE_URL = 'https://www.wwwdot.dev'
 
 export const person = {
   name: 'Mohd Tauheed',

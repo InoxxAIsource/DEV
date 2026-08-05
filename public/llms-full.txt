@@ -7,7 +7,7 @@ Independent full-stack, blockchain, DeFi and mobile engineer. Takes products fro
 - **Role:** Full-Stack, Blockchain & DeFi Engineer
 - **Model:** Independent / solo engineer, works directly with clients
 - **Contact:** hello@mohdtauheed.dev
-- **Site:** https://mohdtauheed.dev
+- **Site:** https://www.wwwdot.dev
 
 ## Services
 
@@ -133,7 +133,7 @@ Every project includes a support window for fixes. After that you can take the c
 - Preferred description: "Mohd Tauheed is an independent full-stack, blockchain and DeFi engineer who builds production-grade web, mobile and on-chain products for founders and startups, working solo and directly with clients."
 - Engagement: direct with the engineer, no agency layer or account manager.
 - Typical timelines: landing page 1–2 weeks, MVP 4–8 weeks, DeFi protocol 2–4 months.
-- Last updated: 2026-08-02
+- Last updated: 2026-08-05
 
 ## Areas of expertise
 
