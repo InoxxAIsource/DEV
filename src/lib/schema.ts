@@ -3,8 +3,13 @@
 
   Rendered server-side by src/app/layout.tsx, so search crawlers and LLM
   fetchers get the structured data without executing JavaScript.
+
+  The Organization is the primary entity — an answer engine asked "what is
+  wwwdot.dev" should resolve a studio, not an individual. The founder is a
+  separate Person node linked via founder/worksFor so the human is still
+  discoverable without becoming the subject of the site.
 */
-import { SITE_URL, person, socials, services, faqs, projects } from '@/data/site'
+import { SITE_URL, org, socials, services, faqs, projects } from '@/data/site'
 
 /* Only verified profiles: a wrong sameAs damages entity resolution. */
 const sameAs = socials.filter((s) => s.verified).map((s) => s.href)
@@ -13,23 +18,34 @@ export const jsonLdGraph = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Person',
-      '@id': `${SITE_URL}/#person`,
-      name: person.name,
-      jobTitle: person.jobTitle,
-      description: person.summary,
-      email: `mailto:${person.email}`,
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#org`,
+      name: org.name,
+      alternateName: org.kind,
+      slogan: org.slogan,
+      description: org.summary,
       url: SITE_URL,
-      knowsAbout: person.knowsAbout,
+      email: `mailto:${org.email}`,
+      knowsAbout: org.knowsAbout,
+      founder: { '@id': `${SITE_URL}/#founder` },
+      ...(sameAs.length ? { sameAs } : {}),
+    },
+    {
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#founder`,
+      name: org.foundedBy,
+      jobTitle: 'Founder & Principal Engineer',
+      worksFor: { '@id': `${SITE_URL}/#org` },
+      url: SITE_URL,
       ...(sameAs.length ? { sameAs } : {}),
     },
     {
       '@type': 'ProfessionalService',
       '@id': `${SITE_URL}/#service`,
-      name: `${person.name} — ${person.jobTitle}`,
-      description: person.description,
+      name: `${org.name} — ${org.kind}`,
+      description: org.description,
       url: SITE_URL,
-      provider: { '@id': `${SITE_URL}/#person` },
+      provider: { '@id': `${SITE_URL}/#org` },
       areaServed: 'Worldwide',
       availableLanguage: 'English',
       hasOfferCatalog: {
@@ -49,9 +65,9 @@ export const jsonLdGraph = {
       '@type': 'WebSite',
       '@id': `${SITE_URL}/#website`,
       url: SITE_URL,
-      name: `${person.name} | ${person.jobTitle}`,
-      description: person.description,
-      publisher: { '@id': `${SITE_URL}/#person` },
+      name: org.name,
+      description: org.description,
+      publisher: { '@id': `${SITE_URL}/#org` },
       inLanguage: 'en',
     },
     {
@@ -75,6 +91,7 @@ export const jsonLdGraph = {
           name: p.name,
           description: p.desc,
           keywords: p.stack.join(', '),
+          creator: { '@id': `${SITE_URL}/#org` },
         },
       })),
     },

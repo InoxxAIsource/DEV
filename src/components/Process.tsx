@@ -13,7 +13,7 @@ const steps = [
   },
   {
     n: '03',
-    title: 'Build & iterate',
+    title: 'Engineer & iterate',
     line: 'Weekly demos with working software. You see progress, not promises.',
   },
   {

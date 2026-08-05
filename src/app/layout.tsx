@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import './globals.css'
-import { SITE_URL, person } from '@/data/site'
+import { SITE_URL, org } from '@/data/site'
 import { jsonLdGraph } from '@/lib/schema'
 import { SmoothScroll } from '@/components/SmoothScroll'
 
-const title = `${person.name} | ${person.jobTitle}`
+const title = `${org.name} — ${org.kind}`
 
 /*
   Next's Metadata API replaces the static tags the Vite build injected into
@@ -15,11 +15,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: title,
-    template: `%s | ${person.name}`,
+    template: `%s | ${org.name}`,
   },
-  description: person.description,
-  authors: [{ name: person.name, url: SITE_URL }],
-  creator: person.name,
+  description: org.description,
+  authors: [{ name: org.name, url: SITE_URL }],
+  creator: org.name,
+  publisher: org.name,
   alternates: { canonical: '/' },
   robots: {
     index: true,
@@ -34,16 +35,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    siteName: person.name,
+    siteName: org.name,
     title,
-    description: person.description,
+    description: org.description,
     url: '/',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
     title,
-    description: person.description,
+    description: org.description,
   },
 }
 

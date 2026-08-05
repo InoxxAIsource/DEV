@@ -4,7 +4,15 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { EASE, DUR, maskLine, stagger } from '@/lib/motion'
 
-const LINES = ['Building AI Products', 'That Scale.']
+const LINES = ['Engineering AI Products', 'That Scale.']
+
+const TRUST = [
+  'AI Products',
+  'SaaS Platforms',
+  'AI Agents',
+  'Full-Stack Engineering',
+  'Cloud Infrastructure',
+]
 
 export function Hero() {
   const root = useRef<HTMLElement>(null)
@@ -53,7 +61,9 @@ export function Hero() {
 
       <motion.div
         style={{ y: contentY, opacity: contentFade }}
-        className="relative mx-auto w-full max-w-[1600px] px-6 pb-[14vh] md:px-12"
+        /* pt clears the fixed nav: the longer studio copy made the content tall
+           enough to slide under it. pb trimmed to keep the hero at one viewport. */
+        className="relative mx-auto w-full max-w-[1600px] px-6 pb-[9vh] pt-28 md:px-12"
       >
         <motion.div variants={stagger(0.08, 0.15)} initial="hidden" animate="show">
           <motion.p
@@ -61,18 +71,15 @@ export function Hero() {
               hidden: { opacity: 0 },
               show: { opacity: 1, transition: { duration: DUR.slow, ease: EASE } },
             }}
-            className="mb-10 font-mono text-[11px] uppercase tracking-[0.32em] text-muted"
+            className="mb-8 font-mono text-[11px] uppercase tracking-[0.32em] text-muted"
           >
-            Full-Stack AI Engineering Studio
+            AI Engineering Studio • WE WRITE WORKFLOWS™
           </motion.p>
 
           <h1 className="max-w-[16ch] text-[clamp(2.9rem,8.2vw,8.5rem)] font-semibold leading-[0.92] tracking-[-0.045em]">
             {LINES.map((line, i) => (
               <span key={line} className="block overflow-hidden pb-[0.06em]">
-                <motion.span
-                  variants={maskLine}
-                  className="block will-change-transform"
-                >
+                <motion.span variants={maskLine} className="block will-change-transform">
                   {i === LINES.length - 1 ? <span className="text-accent">{line}</span> : line}
                 </motion.span>
               </span>
@@ -88,10 +95,11 @@ export function Hero() {
                 transition: { duration: DUR.slow, ease: EASE, delay: 0.05 },
               },
             }}
-            className="mt-8 max-w-[62ch] text-lg leading-relaxed text-muted md:text-xl"
+            className="mt-7 max-w-[62ch] text-lg leading-relaxed text-muted md:text-xl"
           >
-            From AI agents and SaaS platforms to enterprise applications, we design and build
-            production-ready software with modern engineering and exceptional user experiences.
+            We partner with startups and enterprises to design, engineer and launch AI products,
+            SaaS platforms, automation systems and interactive digital experiences that are built
+            for performance, scalability and long-term growth.
           </motion.p>
 
           <motion.div
@@ -103,14 +111,14 @@ export function Hero() {
                 transition: { duration: DUR.slow, ease: EASE, delay: 0.1 },
               },
             }}
-            className="mt-11 flex flex-wrap items-center gap-3"
+            className="mt-9 flex flex-wrap items-center gap-3"
           >
             <a
               href="#contact"
               data-cursor="hover"
               className="group inline-flex items-center gap-3 rounded-full bg-accent px-7 py-4 text-[15px] font-semibold text-bg transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-8px_hsl(28_100%_55%/0.5)] active:translate-y-0"
             >
-              Start Your Project
+              Work With Us
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path
                   d="M3 11L11 3M11 3H5M11 3V9"
@@ -126,9 +134,33 @@ export function Hero() {
               data-cursor="hover"
               className="inline-flex items-center rounded-full border border-line bg-bg/40 px-7 py-4 text-[15px] font-semibold text-ink backdrop-blur-sm transition-[transform,border-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-accent/50 active:translate-y-0"
             >
-              View Our Work
+              Explore Our Work
             </a>
           </motion.div>
+
+          {/* Trust line — same mono treatment as the eyebrow, no new patterns */}
+          <motion.ul
+            variants={{
+              hidden: { opacity: 0, y: 16 },
+              show: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: DUR.slow, ease: EASE, delay: 0.16 },
+              },
+            }}
+            className="mt-9 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.22em] text-faint"
+          >
+            {TRUST.map((t, i) => (
+              <li key={t} className="flex items-center gap-3">
+                {i > 0 && (
+                  <span aria-hidden="true" className="text-line">
+                    •
+                  </span>
+                )}
+                {t}
+              </li>
+            ))}
+          </motion.ul>
         </motion.div>
       </motion.div>
 

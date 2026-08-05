@@ -1,6 +1,9 @@
 # wwwdot.dev
 
-Personal site for **Mohd Tauheed** — independent full-stack, blockchain, DeFi and mobile engineer.
+**AI Engineering Studio** — *WE WRITE WORKFLOWS™*
+
+We design, engineer and launch AI products, SaaS platforms, automation systems
+and interactive digital experiences.
 
 Next.js App Router · React 19 · TypeScript · Tailwind v4 · GSAP · Lenis
 
@@ -46,7 +49,7 @@ every surface updates together.
 | `/robots.txt` | `src/app/robots.ts` — allows 16 AI crawlers incl. GPTBot, ClaudeBot, PerplexityBot, Google-Extended |
 | `/sitemap.xml` | `src/app/sitemap.ts` — driven by `routes` |
 | `/llms.txt`, `/llms-full.txt` | `scripts/gen-seo.mjs` ([llmstxt.org](https://llmstxt.org)) |
-| JSON-LD | `src/lib/schema.ts` — `Person`, `ProfessionalService`, `WebSite`, `FAQPage`, `ItemList` |
+| JSON-LD | `src/lib/schema.ts` — `Organization` (primary), `Person` (founder), `ProfessionalService`, `WebSite`, `FAQPage`, `ItemList` |
 | Titles, canonical, OG, Twitter | Next Metadata API in `src/app/layout.tsx` |
 
 The FAQ component and the `FAQPage` schema read the same array, so on-page copy

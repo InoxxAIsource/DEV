@@ -10,7 +10,8 @@ export function Footer() {
               MT
             </div>
             <p className="mt-4 max-w-xs text-sm text-muted">
-              Web, blockchain, DeFi and mobile. Built to production standard.
+              AI engineering studio. AI products, SaaS platforms and automation systems, built
+              to production standard.
             </p>
           </div>
 
@@ -47,8 +48,10 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="mt-12 border-t border-line pt-6 font-mono text-xs text-faint">
-          © 2026 Mohd Tauheed
+        <p className="mt-12 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-line pt-6 font-mono text-xs text-faint">
+          <span>© 2026 wwwdot.dev</span>
+          <span aria-hidden="true" className="text-line">•</span>
+          <span>WE WRITE WORKFLOWS™</span>
         </p>
       </div>
     </footer>

@@ -32,10 +32,11 @@ export function Services() {
       <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
         <Reveal>
           <h2 className="max-w-2xl text-4xl font-semibold tracking-tighter md:text-5xl">
-            What I build
+            What we build
           </h2>
           <p className="mt-4 max-w-lg text-muted">
-            Nine disciplines, one engineer. Scoped, built and shipped without a middle layer.
+            Nine engineering disciplines under one roof. Scoped, architected and shipped
+            without a middle layer.
           </p>
         </Reveal>
 

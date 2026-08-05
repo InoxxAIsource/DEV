@@ -1,18 +1,19 @@
 import { Reveal } from '../lib/Reveal'
 
+/* TODO: replace with attributed quotes from real clients before driving traffic. */
 const quotes = [
   {
-    body: '“Tauheed rebuilt our token vesting contracts and cut gas costs enough that our community noticed. Zero incidents since launch.”',
+    body: '“They rebuilt our token vesting contracts and cut gas costs enough that our community noticed. Zero incidents since launch.”',
     name: 'Arjun Mehta',
     role: 'Founder, DeFi protocol',
   },
   {
-    body: '“He shipped our MVP in six weeks when two agencies quoted four months. We closed our pre-seed off that demo.”',
+    body: '“They shipped our MVP in six weeks when two agencies quoted four months. We closed our pre-seed off that demo.”',
     name: 'Lena Okafor',
     role: 'Co-founder, SaaS startup',
   },
   {
-    body: '“The landing page he built doubled our waitlist conversion. He argued us out of features we did not need, which saved money.”',
+    body: '“The landing experience they built doubled our waitlist conversion. They argued us out of features we did not need, which saved money.”',
     name: 'Daniyal Khan',
     role: 'Founder, consumer app',
   },

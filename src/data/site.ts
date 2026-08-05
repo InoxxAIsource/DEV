@@ -2,15 +2,13 @@
   Single source of truth for every SEO / GEO / AEO surface.
 
   Consumed by:
-    - React components (FAQ, Contact, Footer)
-    - scripts/gen-seo.mjs, which generates:
-        public/robots.txt      crawler + AI-agent access rules
-        public/llms.txt        concise site summary for LLMs (llmstxt.org)
-        public/llms-full.txt   full-detail variant
-        public/sitemap.xml
-        index.html             JSON-LD graph + OG/Twitter meta (between markers)
+    - React components (FAQ, Services, Contact, Footer)
+    - src/lib/schema.ts -> the JSON-LD graph rendered by app/layout.tsx
+    - scripts/gen-seo.mjs -> public/llms.txt and public/llms-full.txt
 
-  Change a fact here and every artifact regenerates consistently.
+  The studio is the primary entity. The founder is modelled separately and
+  linked, so answer engines resolve "wwwdot.dev" to an organisation rather
+  than to an individual.
 */
 
 /*
@@ -20,38 +18,42 @@
 */
 export const SITE_URL = 'https://www.wwwdot.dev'
 
-export const person = {
-  name: 'Mohd Tauheed',
-  jobTitle: 'Full-Stack, Blockchain & DeFi Engineer',
-  /* Public address. Route it to your inbox with registrar-level forwarding —
-     the contact form is a mailto: handler, not a server endpoint. */
+export const org = {
+  name: 'wwwdot.dev',
+  slogan: 'WE WRITE WORKFLOWS™',
+  kind: 'AI Engineering Studio',
+  /* Public address. Route it wherever you read mail. */
   email: 'contact@wwwdot.dev',
   description:
-    'Independent full-stack, blockchain, DeFi and mobile engineer. Takes products from idea to production across web, mobile and blockchain, built for security, scale and real-world use.',
-  /* One-line answer to "who is Mohd Tauheed?" — the sentence an AI engine is
-     most likely to lift verbatim, so it is written to stand alone. */
+    'AI engineering studio. We partner with startups and enterprises to design, engineer and launch AI products, SaaS platforms, automation systems and interactive digital experiences.',
+  /*
+    The sentence an answer engine is most likely to quote when asked what
+    wwwdot.dev is. Written to stand alone, with no surrounding context.
+  */
   summary:
-    'Mohd Tauheed is an independent full-stack, blockchain and DeFi engineer who builds production-grade web, mobile and on-chain products for founders and startups, working solo and directly with clients.',
+    'wwwdot.dev is an AI engineering studio that designs, engineers and ships AI products, SaaS platforms, automation systems and interactive digital experiences for startups and enterprises.',
   knowsAbout: [
+    'AI product engineering',
+    'AI agents and multi-agent systems',
+    'SaaS platform development',
     'Full-stack web development',
-    'Blockchain development',
+    'Workflow automation',
+    'Cloud infrastructure',
     'Smart contract development',
     'DeFi protocol engineering',
-    'Solidity',
-    'React',
+    'Real-world asset tokenization',
+    'Mobile application development',
     'Next.js',
-    'Node.js',
-    'Flutter',
-    'Web3',
-    'Layer 2 and rollups',
-    'Decentralized exchanges',
-    'Mobile app development',
+    'React',
+    'Solidity',
+    'Python',
   ],
+  foundedBy: 'Mohd Tauheed',
 }
 
 /*
   sameAs feeds entity resolution — it is how a search or answer engine links
-  this site to a known person. Only `verified: true` entries are emitted,
+  this site to a known profile. Only `verified: true` entries are emitted,
   because a wrong sameAs actively damages entity association.
 */
 export const socials = [
@@ -63,13 +65,28 @@ export const socials = [
 /*
   Service catalogue, kept in sync with the agency site at nexbuild.work.
   `icon` names map to lucide-react exports in components/Services.tsx.
-  Feeds the page, the ProfessionalService OfferCatalog and llms.txt.
+  Feeds the page, the OfferCatalog and llms.txt.
 */
 export const services = [
   {
+    slug: 'ai-development',
+    title: 'AI Development',
+    blurb: 'Agents that do real work.',
+    icon: 'Sparkles',
+    items: [
+      'AI agents and copilots',
+      'AI trading / portfolio agents',
+      'AI research assistants',
+      'AI CRM and support agents',
+      'Workflow automation tools',
+      'Price prediction models',
+      'AI-powered dashboards',
+    ],
+  },
+  {
     slug: 'full-stack-development',
     title: 'Full-Stack Development',
-    blurb: 'Full products, not just pages.',
+    blurb: 'Complete products, not pages.',
     icon: 'Globe',
     items: [
       'Websites, web apps, static sites',
@@ -144,21 +161,6 @@ export const services = [
     ],
   },
   {
-    slug: 'ai-development',
-    title: 'AI Development',
-    blurb: 'Agents that do real work.',
-    icon: 'Sparkles',
-    items: [
-      'AI chatbots',
-      'AI trading / portfolio agents',
-      'AI research assistants',
-      'AI CRM and support agents',
-      'AI automation tools',
-      'Price prediction models',
-      'AI-powered dashboards',
-    ],
-  },
-  {
     slug: 'payments-finance-automation',
     title: 'Payments & Finance Automation',
     blurb: 'Fiat and crypto, one flow.',
@@ -203,42 +205,43 @@ export const services = [
 */
 export const faqs = [
   {
-    q: 'Do you work solo or with a team?',
-    a: 'Solo by default. You talk to the person writing the code. For larger scopes I bring in one or two trusted specialists (design, audits) and stay accountable for delivery.',
+    q: 'How do you work with clients?',
+    a: 'We partner directly with the founding or product team. One engineering lead owns your account end to end, so there is no agency layer and no handoff between the people who design the system and the people who ship it.',
   },
   {
-    q: 'How long does a typical project take?',
-    a: 'A landing page runs 1 to 2 weeks, an MVP 4 to 8 weeks, a full DeFi protocol 2 to 4 months. You get a concrete timeline after the discovery call, and weekly demos against it.',
+    q: 'How long does a typical engagement take?',
+    a: 'A landing experience runs 1 to 2 weeks, an MVP 4 to 8 weeks, and a full DeFi protocol or AI platform 2 to 4 months. You get a concrete timeline after the discovery call and weekly demos against it.',
+  },
+  {
+    q: 'What does an engagement include?',
+    a: 'Discovery and scope, system and data architecture, design, engineering, deployment and a support window. You receive the full codebase with documentation, and can either take it in-house or keep us on retainer.',
+  },
+  {
+    q: 'How do you handle security and audits?',
+    a: 'We build against audited patterns such as OpenZeppelin, run static analysis and full test coverage, and coordinate third-party audits for any contract holding real value before it reaches mainnet.',
   },
   {
     q: 'Do you sign NDAs?',
     a: 'Yes, before any technical discussion if you prefer. Your idea, data and codebase stay confidential either way.',
   },
-  {
-    q: 'Are your smart contracts audited?',
-    a: 'I write against audited patterns (OpenZeppelin), run static analysis and full test coverage, and coordinate third-party audits for anything holding real value before mainnet.',
-  },
-  {
-    q: 'What happens after launch?',
-    a: 'Every project includes a support window for fixes. After that you can take the codebase in-house with full documentation, or keep me on a monthly retainer.',
-  },
 ]
 
 /* Portfolio entries, summarised for LLM consumption. */
 export const projects = [
-  { name: 'HYPE Terminal', desc: 'Pro crypto DEX trading terminal with real-time charts and on-chain execution.', stack: ['React', 'WebSocket', 'Web3'] },
-  { name: 'ORCHESTRA', desc: 'AI orchestration platform routing GPT, Claude and Gemini through one layer.', stack: ['Next.js', 'MCP', 'OpenAI'] },
-  { name: 'ORCHESTRA Console', desc: 'Live multi-agent network for routing, inspecting and tracing agent runs in real time.', stack: ['React', 'WebSocket', 'D3.js'] },
   { name: 'FactoryOS', desc: 'Industrial OS coordinating robotic assembly, vision and maintenance in real time.', stack: ['Next.js', 'IoT', 'Python'] },
   { name: 'AUREN', desc: 'Luxury fashion house editorial with campaign films and seasonal lookbooks.', stack: ['Next.js', 'GSAP', 'Sanity'] },
-  { name: 'AXIOM', desc: 'Landing experience for a crypto AI agent platform.', stack: ['React', 'GSAP', 'Three.js'] },
-  { name: 'YAP', desc: 'Playful AI-avatar app that turns a one-word vibe into a character.', stack: ['React', 'Node.js', 'OpenAI'] },
-  { name: 'VIVID', desc: 'Fashion eyewear ecommerce with cinematic product pages.', stack: ['Next.js', 'Shopify', 'GSAP'] },
-  { name: 'GeoIQ', desc: 'SaaS that tracks brand visibility inside AI search.', stack: ['React', 'PostgreSQL', 'OpenAI'] },
-  { name: 'AURA', desc: 'Luxury residence tower landing with a cinematic 3D hero.', stack: ['Next.js', 'GSAP', 'Three.js'] },
-  { name: 'PREDIKT', desc: 'Prediction market app with on-chain settlement.', stack: ['Solidity', 'React', 'The Graph'] },
+  { name: 'QuantOS', desc: 'Institutional-grade AI quant research, backtesting and execution platform.', stack: ['React', 'WebSocket', 'Python'] },
+  { name: 'ORCHESTRA Console', desc: 'Live multi-agent network for routing, inspecting and tracing agent runs.', stack: ['React', 'WebSocket', 'D3.js'] },
+  { name: 'HYPE Terminal', desc: 'Pro crypto DEX trading terminal with real-time charts and on-chain execution.', stack: ['React', 'WebSocket', 'Web3'] },
+  { name: 'GeoIQ', desc: 'SaaS that measures brand visibility inside AI search.', stack: ['React', 'PostgreSQL', 'OpenAI'] },
+  { name: 'ORCHESTRA', desc: 'AI orchestration platform routing GPT, Claude and Gemini through one layer.', stack: ['Next.js', 'MCP', 'OpenAI'] },
   { name: 'P2PxBT', desc: 'Peer-to-peer crypto exchange with escrow-protected trades.', stack: ['React', 'Node.js', 'Web3'] },
+  { name: 'AXIOM', desc: 'Crypto AI agent platform executing strategy inside on-chain guardrails.', stack: ['React', 'GSAP', 'Three.js'] },
+  { name: 'VIVID', desc: 'Fashion eyewear ecommerce with cinematic product pages.', stack: ['Next.js', 'Shopify', 'GSAP'] },
   { name: 'L1 Chain', desc: 'Custom Layer 1 blockchain with PoS consensus and EVM compatibility.', stack: ['Rust', 'Solidity', 'Go'] },
+  { name: 'YAP', desc: 'Consumer AI app generating talking 3D characters from a single prompt.', stack: ['React', 'Node.js', 'OpenAI'] },
+  { name: 'PREDIKT', desc: 'Prediction market with on-chain settlement.', stack: ['Solidity', 'React', 'The Graph'] },
+  { name: 'AURA', desc: 'Luxury residence tower landing with a cinematic 3D hero.', stack: ['Next.js', 'GSAP', 'Three.js'] },
 ]
 
 /* Routes for sitemap.xml. Grows as blog / service pages are added. */

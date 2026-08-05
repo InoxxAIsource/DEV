@@ -5,7 +5,7 @@ import { rise, stagger, inView, maskLine } from '@/lib/motion'
 
 const STATEMENT = [
   'Most software is used.',
-  'A little of it is',
+  'The best of it is',
   'remembered.',
 ]
 
@@ -25,7 +25,7 @@ export function StudioIntro() {
             variants={rise}
             className="mb-12 font-mono text-[11px] uppercase tracking-[0.32em] text-muted"
           >
-            The practice
+            The studio
           </motion.p>
 
           <h2 className="max-w-[14ch] text-[clamp(2.2rem,5.4vw,4.75rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
@@ -46,9 +46,10 @@ export function StudioIntro() {
             variants={rise}
             className="mt-12 max-w-[46ch] text-lg leading-relaxed text-muted md:text-xl"
           >
-            I work solo and directly with founders — no agency layer, no account manager,
-            no handoff between the person who designs it and the person who ships it.
-            Web, blockchain and AI products taken from idea to production.
+            We are an AI engineering studio. We partner directly with product and founding
+            teams — no agency layer, no account manager, no handoff between the people who
+            architect a system and the people who ship it. Discovery to production, owned end
+            to end.
           </motion.p>
         </div>
 
@@ -57,9 +58,9 @@ export function StudioIntro() {
           className="grid shrink-0 grid-cols-2 gap-x-14 gap-y-10 lg:grid-cols-1 lg:gap-y-12"
         >
           {[
-            ['50+', 'Projects delivered'],
-            ['9', 'Disciplines'],
-            ['24/7', 'Direct access'],
+            ['50+', 'Products shipped'],
+            ['9', 'Engineering disciplines'],
+            ['24/7', 'Direct team access'],
           ].map(([value, label]) => (
             <div key={label}>
               <dt className="font-mono text-[10px] uppercase tracking-[0.28em] text-faint">

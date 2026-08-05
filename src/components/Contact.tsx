@@ -4,10 +4,10 @@ import { useState, type FormEvent } from 'react'
 import { Mail } from 'lucide-react'
 import { Reveal } from '../lib/Reveal'
 import { BrandIcon, socials } from './socials'
-import { person } from '../data/site'
+import { org } from '../data/site'
 
-/* Same address the Person schema publishes as mailto: */
-const EMAIL = person.email
+/* Same address the Organization schema publishes as mailto: */
+const EMAIL = org.email
 
 const inputCls =
   'w-full rounded-lg border border-line bg-bg px-4 py-3 text-sm text-ink placeholder:text-faint outline-none transition-colors focus:border-accent/60 focus:ring-2 focus:ring-accent/20'
@@ -44,7 +44,7 @@ export function Contact() {
               Let&apos;s build <span className="text-accent">something.</span>
             </h2>
             <p className="mt-5 max-w-md text-muted">
-              Tell me what you are trying to ship. I reply within one business day, usually with
+              Tell us what you are trying to ship. We reply within one business day, usually with
               questions and a rough scope.
             </p>
 
