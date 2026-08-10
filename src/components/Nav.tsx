@@ -80,16 +80,25 @@ export function Nav() {
   const dim = onLight ? 'text-black/55' : 'text-muted'
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
-        scrolled
-          ? onLight
-            ? 'border-b border-black/10 bg-white/70 backdrop-blur-md'
-            : 'border-b border-line bg-bg/80 backdrop-blur-md'
-          : 'border-b border-transparent'
-      }`}
-    >
-      <div className="mx-auto flex max-w-[1600px] items-center gap-6 px-6 py-5 md:px-12">
+    /*
+      The bar carries its own background, not the <header>. The closed drawer
+      still takes layout space inside the header, which made the element 343px
+      tall on mobile — styling the header meant the scrolled background and blur
+      painted across the top third of the screen. The drawer is now absolutely
+      positioned below the bar, so the visible band is bar height at every
+      breakpoint.
+    */
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div
+        className={`transition-colors duration-500 ${
+          scrolled
+            ? onLight
+              ? 'border-b border-black/10 bg-white/70 backdrop-blur-md'
+              : 'border-b border-line bg-bg/80 backdrop-blur-md'
+            : 'border-b border-transparent'
+        }`}
+      >
+        <div className="mx-auto flex max-w-[1600px] items-center gap-6 px-6 py-5 md:px-12">
         {/* Brand */}
         <a href="#" aria-label="wwwdot.dev, home" className={`shrink-0 ${ink}`}>
           <Wordmark className="text-[22px]" />
@@ -164,12 +173,15 @@ export function Nav() {
               )}
             </svg>
           </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — absolute so it adds no height to the bar */}
       <div
-        className={`md:hidden ${open ? 'pointer-events-auto' : 'pointer-events-none'}`}
+        className={`absolute inset-x-0 top-full pt-2 md:hidden ${
+          open ? 'pointer-events-auto' : 'pointer-events-none'
+        }`}
         aria-hidden={!open}
       >
         <div
