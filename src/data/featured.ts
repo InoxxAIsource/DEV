@@ -273,6 +273,22 @@ export const featured: Featured[] = [
     poster: '/posters/aura.jpg',
     theme: dark('hsl(28 32% 8%)', 'hsl(28 24% 19%)', 'hsl(36 88% 60%)'),
   },
+  {
+    slug: 'squant',
+    index: '15',
+    name: 'SQUANT',
+    tagline: 'Markets move. Our intelligence moves first.',
+    story:
+      'Five independent models score every regime shift and fuse into a single market state, so no position rests on one indicator. Regime, probability and signal read continuously across every asset traded.',
+    role: 'Product Design & Full-Stack',
+    industry: 'Quantitative Trading',
+    year: '2026',
+    tech: ['Next.js', 'Python', 'AI', 'WebSocket'],
+    media: '/work/quat-ai.mp4',
+    poster: '/posters/quat-ai.jpg',
+    /* sampled near-black at hue 192; accent lifted to stay legible as type */
+    theme: dark('hsl(200 20% 5%)', 'hsl(198 18% 16%)', 'hsl(187 86% 55%)'),
+  },
 ]
 
 /* The shell either side of the featured run. */
