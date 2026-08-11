@@ -47,7 +47,6 @@ export function FeaturedProject({
      reduced motion keeps the style prop present — dropping it conditionally
      renders differently on each side and breaks hydration. */
   const mediaY = useTransform(scrollYProgress, [0, 1], ['0%', reduce ? '0%' : '10%'])
-  const indexY = useTransform(scrollYProgress, [0, 1], ['0%', reduce ? '0%' : '-60%'])
 
   /* Mouse parallax — spring-damped so it trails the cursor slightly. */
   const px = useMotionValue(0)
@@ -154,17 +153,6 @@ export function FeaturedProject({
               className="block h-full w-full object-cover transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
             />
           </motion.div>
-
-          {/* Oversized index, bled off the media edge */}
-          <motion.span
-            aria-hidden="true"
-            style={{ y: indexY }}
-            className={`pointer-events-none absolute -top-[6vh] hidden select-none font-mono text-[clamp(5rem,11vw,11rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--p-accent)] opacity-[0.16] lg:block ${
-              flip ? '-right-6' : '-left-6'
-            }`}
-          >
-            {project.index}
-          </motion.span>
         </motion.div>
 
         {/* Editorial column */}
@@ -176,9 +164,7 @@ export function FeaturedProject({
           className={`lg:col-span-5 ${flip ? 'lg:order-1 lg:col-start-1 lg:pr-4' : 'lg:order-2 lg:pl-4'}`}
         >
           <motion.div variants={rise} className="mb-8 flex items-center gap-4">
-            <span className="font-mono text-[11px] font-medium tracking-[0.3em] text-[color:var(--p-accent)]">
-              {project.index}
-            </span>
+            <span className="h-px w-9 bg-[color:var(--p-accent)]" />
             <span className="h-px flex-1 bg-[color:var(--p-line)]" />
             <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[color:var(--p-muted)]">
               {project.year}

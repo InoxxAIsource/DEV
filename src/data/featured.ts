@@ -24,7 +24,6 @@ export type Theme = {
 
 export type Featured = {
   slug: string
-  index: string
   name: string
   tagline: string
   story: string
@@ -61,7 +60,6 @@ const light = (bg: string, line: string, accent: string, onAccent = bg): Theme =
 export const featured: Featured[] = [
   {
     slug: 'factoryos',
-    index: '01',
     name: 'FactoryOS',
     tagline: 'Autonomous manufacturing, one control plane.',
     story:
@@ -76,7 +74,6 @@ export const featured: Featured[] = [
   },
   {
     slug: 'auren',
-    index: '02',
     name: 'AUREN',
     tagline: "Luxury isn't loud. It's remembered.",
     story:
@@ -95,7 +92,6 @@ export const featured: Featured[] = [
   },
   {
     slug: 'quantos',
-    index: '03',
     name: 'QuantOS',
     tagline: 'Trade smarter. Powered by AI.',
     story:
@@ -110,7 +106,6 @@ export const featured: Featured[] = [
   },
   {
     slug: 'orchestra-console',
-    index: '04',
     name: 'ORCHESTRA Console',
     tagline: 'Mission control for a fleet of agents.',
     story:
@@ -125,7 +120,6 @@ export const featured: Featured[] = [
   },
   {
     slug: 'hype-terminal',
-    index: '05',
     name: 'HYPE Terminal',
     tagline: 'A trading desk that fits in a tab.',
     story:
@@ -140,7 +134,6 @@ export const featured: Featured[] = [
   },
   {
     slug: 'geoiq',
-    index: '06',
     name: 'GeoIQ',
     tagline: 'Find out what AI says about you.',
     story:
@@ -155,7 +148,6 @@ export const featured: Featured[] = [
   },
   {
     slug: 'orchestra',
-    index: '07',
     name: 'ORCHESTRA',
     tagline: 'Orchestrate every AI. One platform.',
     story:
@@ -170,7 +162,6 @@ export const featured: Featured[] = [
   },
   {
     slug: 'p2pxbt',
-    index: '08',
     name: 'P2PxBT',
     tagline: 'Peer to peer, escrow protected.',
     story:
@@ -185,7 +176,6 @@ export const featured: Featured[] = [
   },
   {
     slug: 'axiom',
-    index: '09',
     name: 'AXIOM',
     tagline: 'Autonomous execution. Your guardrails.',
     story:
@@ -200,7 +190,6 @@ export const featured: Featured[] = [
   },
   {
     slug: 'vivid',
-    index: '10',
     name: 'VIVID',
     tagline: 'See louder.',
     story:
@@ -215,7 +204,6 @@ export const featured: Featured[] = [
   },
   {
     slug: 'l1-chain',
-    index: '11',
     name: 'L1 Chain',
     tagline: 'Ethereum, at warp speed.',
     story:
@@ -230,7 +218,6 @@ export const featured: Featured[] = [
   },
   {
     slug: 'yap',
-    index: '12',
     name: 'YAP',
     tagline: 'Your face, but it yaps.',
     story:
@@ -245,7 +232,6 @@ export const featured: Featured[] = [
   },
   {
     slug: 'predikt',
-    index: '13',
     name: 'PREDIKT',
     tagline: 'Markets for what happens next.',
     story:
@@ -260,7 +246,6 @@ export const featured: Featured[] = [
   },
   {
     slug: 'aura',
-    index: '14',
     name: 'AURA',
     tagline: 'A tower, told cinematically.',
     story:
@@ -275,7 +260,6 @@ export const featured: Featured[] = [
   },
   {
     slug: 'squant',
-    index: '15',
     name: 'SQUANT',
     tagline: 'Markets move. Our intelligence moves first.',
     story:
@@ -291,7 +275,6 @@ export const featured: Featured[] = [
   },
   {
     slug: 'meridian',
-    index: '16',
     name: 'MERIDIAN',
     tagline: 'One desk. Every regime.',
     story:
