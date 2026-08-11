@@ -244,5 +244,13 @@ export const projects = [
   { name: 'AURA', desc: 'Luxury residence tower landing with a cinematic 3D hero.', stack: ['Next.js', 'GSAP', 'Three.js'] },
 ]
 
-/* Routes for sitemap.xml. Grows as blog / service pages are added. */
-export const routes = [{ path: '/', priority: 1.0, changefreq: 'weekly' }]
+/*
+  Routes for sitemap.xml. Grows as blog / service pages are added.
+
+  `lastmod` is an explicit date, not build time. Deriving it from new Date()
+  meant every deploy claimed the content had changed, which teaches crawlers to
+  distrust the signal. Bump it when the page's content actually changes.
+*/
+export const routes = [
+  { path: '/', priority: 1.0, changefreq: 'weekly', lastmod: '2026-08-11' },
+]

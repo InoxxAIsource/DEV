@@ -32,6 +32,8 @@ export default function robots(): MetadataRoute.Robots {
       ...AI_AGENTS.map((userAgent) => ({ userAgent, allow: '/' })),
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
+    /* No `host`: it is a Yandex-only directive that Google ignores, and Next
+       emits it as a full URL ("Host: https://...") which is not valid Host
+       syntax anyway. Canonicalisation is handled by <link rel="canonical">. */
   }
 }
