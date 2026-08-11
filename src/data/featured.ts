@@ -289,6 +289,22 @@ export const featured: Featured[] = [
     /* sampled near-black at hue 192; accent lifted to stay legible as type */
     theme: dark('hsl(200 20% 5%)', 'hsl(198 18% 16%)', 'hsl(187 86% 55%)'),
   },
+  {
+    slug: 'meridian',
+    index: '16',
+    name: 'MERIDIAN',
+    tagline: 'One desk. Every regime.',
+    story:
+      'An algorithmic trading desk that classifies the market before it sizes a position. Trend, chop and panic states are scored continuously, with execution telemetry, latency and time-in-state on the same screen.',
+    role: 'Product Design & Full-Stack',
+    industry: 'Algorithmic Trading',
+    year: '2026',
+    tech: ['React', 'WebSocket', 'Python', 'AI'],
+    media: '/work/ai-trading-terminal.mp4',
+    poster: '/posters/ai-trading-terminal.jpg',
+    /* sampled dark slate at hue 207, gold accent at hue 40 lifted for legibility */
+    theme: dark('hsl(207 26% 7%)', 'hsl(207 20% 17%)', 'hsl(43 92% 56%)'),
+  },
 ]
 
 /* The shell either side of the featured run. */
