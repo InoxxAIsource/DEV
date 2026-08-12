@@ -9,7 +9,8 @@
     "build": "npm run seo && next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "shot": "node shot.mjs"
+    "shot": "node shot.mjs",
+    "seo:audit": "node scripts/seo-audit.mjs"
   },
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
