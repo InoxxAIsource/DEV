@@ -137,4 +137,4 @@ Yes, before any technical discussion if you prefer. Your idea, data and codebase
 - Engagement: direct with the engineering team, no agency layer or account manager.
 - Typical timelines: landing experience 1 to 2 weeks, MVP 4 to 8 weeks, AI platform or DeFi protocol 2 to 4 months.
 - Founded by Mohd Tauheed.
-- Last updated: 2026-08-11
+- Last updated: 2026-08-12
