@@ -38,6 +38,23 @@ export function Services() {
             Nine engineering disciplines under one roof. Scoped, architected and shipped
             without a middle layer.
           </p>
+          {/* Entry point into the /services tree. Without this the service pages
+              have no internal link from the highest-authority page on the site. */}
+          <a
+            href="/services"
+            className="mt-7 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.24em] text-accent transition-opacity hover:opacity-70"
+          >
+            Explore all services
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path
+                d="M3 11L11 3M11 3H5M11 3V9"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </a>
         </Reveal>
 
         <div className="mt-14 grid gap-5 md:grid-cols-2">

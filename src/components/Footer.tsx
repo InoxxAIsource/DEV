@@ -1,5 +1,6 @@
 import { BrandIcon, socials } from './socials'
 import { Wordmark } from './Wordmark'
+import { servicePages } from '../data/servicePages'
 
 export function Footer() {
   return (
@@ -14,20 +15,38 @@ export function Footer() {
             </p>
           </div>
 
-          <nav className="flex gap-12 text-sm">
+          {/* Sitewide link surface into the service tree. Previously the footer
+              carried only on-page anchors, so no crawlable route was reachable
+              from anywhere except the services section. */}
+          <nav className="flex flex-wrap gap-12 text-sm">
             <div className="grid gap-3">
-              <a href="#work" className="text-muted transition-colors hover:text-ink">
-                Work
-              </a>
-              <a href="#services" className="text-muted transition-colors hover:text-ink">
+              <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-faint">
                 Services
-              </a>
+              </span>
+              {servicePages.map((s) => (
+                <a
+                  key={s.slug}
+                  href={`/services/${s.slug}`}
+                  className="text-muted transition-colors hover:text-ink"
+                >
+                  {s.h1}
+                </a>
+              ))}
             </div>
             <div className="grid gap-3">
-              <a href="#about" className="text-muted transition-colors hover:text-ink">
+              <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-faint">
+                Studio
+              </span>
+              <a href="/#work" className="text-muted transition-colors hover:text-ink">
+                Work
+              </a>
+              <a href="/services" className="text-muted transition-colors hover:text-ink">
+                All services
+              </a>
+              <a href="/#about" className="text-muted transition-colors hover:text-ink">
                 About
               </a>
-              <a href="#contact" className="text-muted transition-colors hover:text-ink">
+              <a href="/#contact" className="text-muted transition-colors hover:text-ink">
                 Contact
               </a>
             </div>
