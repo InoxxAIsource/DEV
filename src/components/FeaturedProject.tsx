@@ -179,12 +179,14 @@ export function FeaturedProject({
             </span>
           </h2>
 
-          <motion.p
+          {/* h3, not p: gives each project a real h2 > h3 hierarchy for
+              crawlers. Styling is unchanged, so this is semantic only. */}
+          <motion.h3
             variants={rise}
-            className="mt-5 max-w-[30ch] text-[clamp(1.1rem,1.7vw,1.5rem)] leading-[1.25] tracking-[-0.02em] text-[color:var(--p-accent)]"
+            className="mt-5 max-w-[30ch] text-[clamp(1.1rem,1.7vw,1.5rem)] font-normal leading-[1.25] tracking-[-0.02em] text-[color:var(--p-accent)]"
           >
             {project.tagline}
-          </motion.p>
+          </motion.h3>
 
           <motion.p
             variants={rise}
@@ -224,8 +226,13 @@ export function FeaturedProject({
           </motion.dl>
 
           <motion.div variants={rise} className="mt-11 flex flex-wrap items-center gap-3">
+            {/* Both CTAs previously pointed at `#${slug}` — the section they
+                already sit in — so every project shipped two dead self-links.
+                They now resolve to the live product where one is known, and
+                to the enquiry form otherwise, which also gives each project a
+                conversion path. */}
             <a
-              href={project.href ?? `#${project.slug}`}
+              href={project.href ?? '#contact'}
               data-cursor="hover"
               className="group inline-flex items-center gap-3 rounded-full bg-[color:var(--p-accent)] px-6 py-3.5 text-sm font-semibold text-[color:var(--p-on-accent)] transition-transform duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 active:translate-y-0"
             >
@@ -241,11 +248,11 @@ export function FeaturedProject({
               </svg>
             </a>
             <a
-              href={`#${project.slug}`}
+              href="#contact"
               data-cursor="hover"
               className="inline-flex items-center rounded-full border border-[color:var(--p-line)] px-6 py-3.5 text-sm font-semibold transition-[transform,border-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-[color:var(--p-accent)] active:translate-y-0"
             >
-              Case study
+              Build something like this
             </a>
           </motion.div>
         </motion.div>

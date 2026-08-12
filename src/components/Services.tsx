@@ -32,7 +32,7 @@ export function Services() {
       <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
         <Reveal>
           <h2 className="max-w-2xl text-4xl font-semibold tracking-tighter md:text-5xl">
-            What we build
+            AI engineering services
           </h2>
           <p className="mt-4 max-w-lg text-muted">
             Nine engineering disciplines under one roof. Scoped, architected and shipped

@@ -49,6 +49,13 @@ export const org = {
     'Python',
   ],
   foundedBy: 'Mohd Tauheed',
+  /* Rendered from the real wordmark by scripts/gen-brand-assets.mjs, so the
+     logo in structured data matches the site rather than approximating it. */
+  logo: '/logo.png',
+  ogImage: '/og.png',
+  /* Only state what is verifiable. No address, phone, rating or founding date
+     is claimed here because none can be evidenced yet — inventing them would
+     poison entity resolution rather than help it. */
 }
 
 /*
@@ -200,29 +207,47 @@ export const services = [
 ]
 
 /*
-  Answer-engine content. Each answer is written to be self-contained and
-  extractable — no "as mentioned above", no pronouns depending on context.
+  Answer-engine content. Every answer is written to be self-contained and
+  extractable: it names the subject rather than relying on the question for
+  context, states one concrete fact early, and avoids "as mentioned above".
+  An LLM lifting a single entry should still produce a correct, useful answer.
+
+  The first four target commercial questions buyers actually search
+  ("what does an AI development company do", "how much does it cost",
+  "how long does it take", "how do I choose one"). The rest cover process.
 */
 export const faqs = [
   {
-    q: 'How do you work with clients?',
-    a: 'We partner directly with the founding or product team. One engineering lead owns your account end to end, so there is no agency layer and no handoff between the people who design the system and the people who ship it.',
+    q: 'What does wwwdot.dev build?',
+    a: 'wwwdot.dev is an AI engineering studio that builds AI products, AI agents, SaaS platforms, automation systems, web applications and blockchain protocols. Work spans discovery and architecture through to production deployment, in stacks including Next.js, React, Python, Solidity and Node.js.',
   },
   {
-    q: 'How long does a typical engagement take?',
-    a: 'A landing experience runs 1 to 2 weeks, an MVP 4 to 8 weeks, and a full DeFi protocol or AI platform 2 to 4 months. You get a concrete timeline after the discovery call and weekly demos against it.',
+    q: 'How much does it cost to build an AI product or SaaS platform?',
+    a: 'Cost tracks scope rather than a fixed price list. A landing experience is the smallest engagement, an MVP is the most common, and a full AI platform or DeFi protocol is the largest. wwwdot.dev gives a fixed scope and figure after a discovery call, before any work begins, so the number is not a moving estimate.',
+  },
+  {
+    q: 'How long does it take to build an AI SaaS MVP?',
+    a: 'A landing experience runs 1 to 2 weeks, an MVP 4 to 8 weeks, and a full AI platform or DeFi protocol 2 to 4 months. wwwdot.dev commits to a concrete timeline after the discovery call and runs weekly demos against it, so slippage is visible in the first week rather than the last.',
+  },
+  {
+    q: 'How do you choose an AI development company?',
+    a: 'Ask who actually writes the code, whether you get the repository, and how progress is demonstrated. At wwwdot.dev one engineering lead owns the account end to end, you receive the full codebase with documentation, and progress is shown as working software every week rather than status reports.',
+  },
+  {
+    q: 'How do you work with clients?',
+    a: 'wwwdot.dev partners directly with the founding or product team. One engineering lead owns the account end to end, so there is no agency layer and no handoff between the people who architect the system and the people who ship it.',
   },
   {
     q: 'What does an engagement include?',
-    a: 'Discovery and scope, system and data architecture, design, engineering, deployment and a support window. You receive the full codebase with documentation, and can either take it in-house or keep us on retainer.',
+    a: 'Discovery and scope, system and data architecture, design, engineering, deployment and a support window. Clients receive the full codebase with documentation, and can either take it in-house or continue on a retainer.',
   },
   {
     q: 'How do you handle security and audits?',
-    a: 'We build against audited patterns such as OpenZeppelin, run static analysis and full test coverage, and coordinate third-party audits for any contract holding real value before it reaches mainnet.',
+    a: 'wwwdot.dev builds against audited patterns such as OpenZeppelin, runs static analysis and full test coverage, and coordinates third-party audits for any contract holding real value before it reaches mainnet.',
   },
   {
     q: 'Do you sign NDAs?',
-    a: 'Yes, before any technical discussion if you prefer. Your idea, data and codebase stay confidential either way.',
+    a: 'Yes, before any technical discussion if preferred. Your idea, data and codebase stay confidential either way.',
   },
 ]
 

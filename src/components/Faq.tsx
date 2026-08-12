@@ -14,7 +14,7 @@ export function Faq() {
       <div className="grid gap-12 lg:grid-cols-[1fr_1.5fr]">
         <Reveal>
           <h2 className="text-4xl font-semibold tracking-tighter md:text-5xl">
-            Common questions
+            AI development questions, answered
           </h2>
         </Reveal>
 
