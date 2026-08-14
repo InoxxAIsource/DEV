@@ -37,7 +37,7 @@ export function Footer() {
               <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-faint">
                 Studio
               </span>
-              <a href="/#work" className="text-muted transition-colors hover:text-ink">
+              <a href="/work" className="text-muted transition-colors hover:text-ink">
                 Work
               </a>
               <a href="/services" className="text-muted transition-colors hover:text-ink">

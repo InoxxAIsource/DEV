@@ -247,12 +247,15 @@ export function FeaturedProject({
                 />
               </svg>
             </a>
+            {/* Routes to the case-study watch page: a crawlable URL where this
+                video is the main content, which is what makes it eligible as a
+                video result. */}
             <a
-              href="#contact"
+              href={`/work/${project.slug}`}
               data-cursor="hover"
               className="inline-flex items-center rounded-full border border-[color:var(--p-line)] px-6 py-3.5 text-sm font-semibold transition-[transform,border-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-[color:var(--p-accent)] active:translate-y-0"
             >
-              Build something like this
+              Case study
             </a>
           </motion.div>
         </motion.div>

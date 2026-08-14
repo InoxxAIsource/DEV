@@ -284,4 +284,18 @@ export const routes = [
   { path: '/services/ai-saas-development', priority: 0.9, changefreq: 'monthly', lastmod: '2026-08-11' },
   { path: '/services/mvp-development', priority: 0.9, changefreq: 'monthly', lastmod: '2026-08-11' },
   { path: '/services/blockchain-development', priority: 0.8, changefreq: 'monthly', lastmod: '2026-08-11' },
+  { path: '/work', priority: 0.9, changefreq: 'monthly', lastmod: '2026-08-12' },
 ]
+
+/*
+  Case-study watch pages. Generated from the featured list so a new project
+  lands in the sitemap automatically. Kept separate from `routes` because the
+  paths are derived rather than authored.
+*/
+export const workRoutes = (slugs: string[]) =>
+  slugs.map((slug) => ({
+    path: `/work/${slug}`,
+    priority: 0.8,
+    changefreq: 'monthly',
+    lastmod: '2026-08-12',
+  }))

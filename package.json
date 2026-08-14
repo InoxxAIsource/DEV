@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "shot": "node shot.mjs",
     "seo:audit": "node scripts/seo-audit.mjs",
-    "brand": "node scripts/gen-brand-assets.mjs"
+    "brand": "node scripts/gen-brand-assets.mjs",
+    "video:meta": "node scripts/gen-video-meta.mjs"
   },
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
