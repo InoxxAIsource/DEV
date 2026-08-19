@@ -65,7 +65,7 @@ export const org = {
 */
 export const socials = [
   { slug: 'x', label: 'X', href: 'https://x.com/BeingtauheedTk', verified: true },
-  { slug: 'github', label: 'GitHub', href: 'https://github.com/', verified: false },
+  { slug: 'github', label: 'GitHub', href: 'https://github.com/InoxxAIsource', verified: true },
   { slug: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/', verified: false },
 ]
 
