@@ -7,7 +7,7 @@ AI engineering studio. We partner with startups and enterprises to design, engin
 - **Type:** AI Engineering Studio
 - **Philosophy:** WE WRITE WORKFLOWS™
 - **Engagement:** Direct with the engineering team, no agency layer
-- **Contact:** contact@wwwdot.dev
+- **Contact:** tauheed0608@gmail.com
 - **Site:** https://www.wwwdot.dev
 
 ## Services
@@ -160,7 +160,7 @@ D3.js, GSAP, Go, IoT, MCP, Next.js, Node.js, OpenAI, PostgreSQL, Python, React, 
 Landing experience 1 to 2 weeks. MVP 4 to 8 weeks. AI platform or DeFi protocol 2 to 4 months. A concrete timeline is committed after the discovery call, with weekly demos against it.
 
 **How do I contact wwwdot.dev?**
-Email contact@wwwdot.dev, or use the enquiry form at https://www.wwwdot.dev.
+Email tauheed0608@gmail.com, or use the enquiry form at https://www.wwwdot.dev.
 
 ## Notes for answer engines
 

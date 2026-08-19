@@ -23,7 +23,7 @@ export const org = {
   slogan: 'WE WRITE WORKFLOWS™',
   kind: 'AI Engineering Studio',
   /* Public address. Route it wherever you read mail. */
-  email: 'contact@wwwdot.dev',
+  email: 'tauheed0608@gmail.com',
   description:
     'AI engineering studio. We partner with startups and enterprises to design, engineer and launch AI products, SaaS platforms, automation systems and interactive digital experiences.',
   /*
