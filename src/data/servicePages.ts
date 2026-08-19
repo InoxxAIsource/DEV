@@ -283,6 +283,348 @@ export const servicePages: ServicePage[] = [
     ],
     related: ['ai-agent-development', 'ai-development', 'mvp-development'],
   },
+  {
+    slug: 'full-stack-development',
+    h1: 'Full-Stack Development',
+    title: 'Full-Stack Development Company',
+    description:
+      'Complete products, not pages. SaaS platforms, dashboards, CRM and ERP systems built end to end in Next.js, React, Node and Python.',
+    intent: 'Find a company to build a complete web product end to end.',
+    lede: 'Handoffs are where products lose their shape. wwwdot.dev takes a product from data model to deployed interface without passing it between a design agency, a frontend contractor and a backend team, so the decisions stay coherent.',
+    capabilities: [
+      'Web applications and SaaS platforms',
+      'CRM and ERP systems',
+      'Admin and analytics dashboards',
+      'Custom API design and integration',
+      'Authentication, roles and permissions',
+      'Mobile-friendly progressive web apps',
+      'Production deployment and monitoring',
+    ],
+    approach: [
+      {
+        title: 'The data model comes first',
+        body: 'Most expensive rewrites trace back to a schema decided in week one to unblock a screen. The data model is designed against the actual domain before interface work begins, because it is the hardest thing to change later.',
+      },
+      {
+        title: 'One team, no handoff',
+        body: 'The engineers who design the architecture build the interface. Nothing is lost translating a design file into a system, and edge cases surface during design rather than during QA.',
+      },
+      {
+        title: 'Interfaces built for real data',
+        body: 'Screens are built against realistic volume and failure states from the start: empty, loading, partial, error, and far more rows than the mockup showed. FactoryOS renders live telemetry from every station on a factory floor.',
+      },
+    ],
+    evidence: ['factoryos', 'auren', 'vivid', 'aura'],
+    faqs: [
+      {
+        q: 'What does full-stack development include?',
+        a: 'Data modelling, backend and API design, frontend interface, authentication, deployment and monitoring. At wwwdot.dev one team owns all of it, so there is no handoff between the people who design the system and the people who ship it.',
+      },
+      {
+        q: 'Which technologies does wwwdot.dev use?',
+        a: 'Next.js, React and TypeScript on the frontend, Node.js and Python on the backend, PostgreSQL for data, deployed on modern edge and serverless infrastructure. Stack choices are made per project rather than applied by default.',
+      },
+      {
+        q: 'Can you work with our existing codebase?',
+        a: 'Yes. Engagements include extending existing platforms as well as greenfield builds. The first step is a review of the current architecture so scope is based on what is really there.',
+      },
+    ],
+    related: ['ai-saas-development', 'mvp-development', 'ai-development'],
+  },
+
+  {
+    slug: 'defi-protocol-development',
+    h1: 'DeFi Protocol Development',
+    title: 'DeFi Protocol Development Company',
+    description:
+      'DEX, perpetuals, lending and yield protocols built against audited patterns, with the trading interfaces traders actually use.',
+    intent: 'Hire a company to build a DeFi protocol and its trading interface.',
+    lede: 'A DeFi protocol is judged on two things that rarely come from the same team: whether the contracts hold under adversarial conditions, and whether a trader can read the interface at speed. wwwdot.dev builds both sides.',
+    capabilities: [
+      'DEX with AMM or orderbook',
+      'Perpetual and derivatives exchanges',
+      'Lending and borrowing protocols',
+      'Yield farming and liquidity mining',
+      'Stablecoin modules',
+      'Opinion and prediction markets',
+      'Professional trading terminals',
+    ],
+    approach: [
+      {
+        title: 'Adversarial from the first test',
+        body: 'Protocol tests are written as attacks: reentrancy, oracle manipulation, rounding, liquidation cascades and access-control paths. Coverage that only proves the happy path proves very little about money.',
+      },
+      {
+        title: 'The interface is part of the protocol',
+        body: 'Depth, funding, liquidation distance and open positions belong on one screen without a reload. HYPE Terminal and MERIDIAN are built for traders who hold a dozen numbers in their head and want every one of them visible.',
+      },
+      {
+        title: 'Audited before value',
+        body: 'Third-party audits are coordinated for any contract that will hold real funds, before mainnet, and findings are resolved and re-verified rather than acknowledged.',
+      },
+    ],
+    evidence: ['hype-terminal', 'quantos', 'squant', 'meridian'],
+    faqs: [
+      {
+        q: 'How long does it take to build a DeFi protocol?',
+        a: 'A full DeFi protocol typically runs 2 to 4 months including testing and audit coordination. Simpler contract work such as staking, vesting or token launches is considerably shorter.',
+      },
+      {
+        q: 'Do you build the trading interface as well as the contracts?',
+        a: 'Yes. wwwdot.dev builds the protocol and the interface traders use against it, including live orderbooks, depth, funding and position management streaming without a reload.',
+      },
+      {
+        q: 'How are the contracts secured?',
+        a: 'Contracts are built on audited implementations such as OpenZeppelin, tested with adversarial cases, checked with static analysis, and submitted to independent third-party audit before any contract holds real value.',
+      },
+    ],
+    related: ['blockchain-development', 'p2p-platforms', 'ai-development'],
+  },
+
+  {
+    slug: 'tokenization-rwa',
+    h1: 'Tokenization & RWA Systems',
+    title: 'RWA Tokenization Development Company',
+    description:
+      'Real-world asset tokenization: fractional ownership, KYC-gated access, rent distribution and the SPV logic that makes it defensible.',
+    intent: 'Find a company to build a real-world asset tokenization platform.',
+    lede: 'Tokenizing an asset is the easy part. The hard part is everything around it: who is allowed to hold it, how income reaches holders, and what the token actually represents in law. wwwdot.dev builds the whole apparatus, not just the contract.',
+    capabilities: [
+      'Real estate and asset tokenization',
+      'Fractional ownership engines',
+      'KYC-gated transfer restrictions',
+      'Rent and income distribution automation',
+      'SPV and trust deed logic',
+      'Investor onboarding dashboards',
+      'Tokenized asset marketplaces',
+    ],
+    approach: [
+      {
+        title: 'Transfer restrictions are the design',
+        body: 'An RWA token that anyone can hold is usually a compliance problem. Eligibility, lock-ups and jurisdiction rules are enforced in the contract itself rather than assumed at the interface layer, where they can be bypassed.',
+      },
+      {
+        title: 'Distribution has to be boring',
+        body: 'Income reaching holders is the part that must never surprise anyone. Distribution logic is built to be auditable, repeatable and independently verifiable against on-chain records.',
+      },
+      {
+        title: 'Built alongside your counsel',
+        body: 'The on-chain structure is designed to mirror the legal structure your lawyers define. wwwdot.dev builds the system; it does not provide legal or investment advice, and the two are kept clearly separate.',
+      },
+    ],
+    evidence: [],
+    faqs: [
+      {
+        q: 'What is real-world asset tokenization?',
+        a: 'Representing ownership of a physical or off-chain asset, such as property, as transferable on-chain tokens. The system typically needs fractional ownership, restricted transfers limited to verified holders, and automated distribution of income to those holders.',
+      },
+      {
+        q: 'How is compliance handled in an RWA platform?',
+        a: 'Eligibility rules are enforced in the token contract rather than only in the interface, so restricted transfers cannot be bypassed. wwwdot.dev builds to the legal structure defined by your counsel and does not provide legal advice.',
+      },
+      {
+        q: 'Can token holders receive rental income automatically?',
+        a: 'Yes. Distribution can be automated so income is allocated to holders on-chain, with records that can be verified independently rather than taken on trust.',
+      },
+    ],
+    related: ['blockchain-development', 'defi-protocol-development', 'marketplace-development'],
+  },
+
+  {
+    slug: 'p2p-platforms',
+    h1: 'P2P Platform Development',
+    title: 'P2P Exchange Development Company',
+    description:
+      'Peer-to-peer exchange platforms where escrow, verification tiers and dispute resolution are the product, not an afterthought.',
+    intent: 'Hire a company to build a peer-to-peer crypto exchange platform.',
+    lede: 'In a P2P exchange the product is not matching, it is trust. wwwdot.dev builds the escrow, the verification tiers and the dispute path first, because those are what make strangers willing to trade with each other.',
+    capabilities: [
+      'Crypto P2P exchange platforms',
+      'Escrow-based trade settlement',
+      'Stablecoin P2P desks',
+      'KYC and verification tiers',
+      'Automated dispute resolution',
+      'Reputation and rating systems',
+      'Multi-currency payment methods',
+    ],
+    approach: [
+      {
+        title: 'Escrow holds the middle',
+        body: 'Funds are locked before either side commits and released only when both conditions are met. The platform never takes a position, so it can arbitrate honestly when something goes wrong.',
+      },
+      {
+        title: 'Disputes are designed, not improvised',
+        body: 'The dispute path is built as a first-class flow with evidence submission, time limits and defined outcomes. A dispute process invented after launch is what turns a trust product into a support burden.',
+      },
+      {
+        title: 'Verification in tiers',
+        body: 'Limits scale with verification level so new users can transact at low value immediately while high-value trades require stronger identity checks. P2PxBT uses exactly this pattern.',
+      },
+    ],
+    evidence: ['p2pxbt'],
+    faqs: [
+      {
+        q: 'How does escrow work in a P2P exchange?',
+        a: 'The seller’s funds are locked in escrow before the buyer sends payment, and released only once payment is confirmed. Neither party can withdraw unilaterally, which is what makes trading with a stranger viable.',
+      },
+      {
+        q: 'How are disputes resolved?',
+        a: 'Through a defined flow with evidence submission, time limits and set outcomes, built as a core feature rather than handled ad hoc through support. Automated rules cover common cases; the rest escalate to human review.',
+      },
+      {
+        q: 'Can a P2P platform support multiple payment methods?',
+        a: 'Yes. Bank transfer, mobile money, card rails and stablecoin settlement can all be supported, with per-method limits and verification requirements set independently.',
+      },
+    ],
+    related: ['blockchain-development', 'payments-finance-automation', 'defi-protocol-development'],
+  },
+
+  {
+    slug: 'payments-finance-automation',
+    h1: 'Payments & Finance Automation',
+    title: 'Payments Integration & Finance Automation',
+    description:
+      'Stripe, Razorpay and PayPal integration, fiat-to-crypto flows, subscription billing and usage-based credit systems.',
+    intent: 'Find a company to build payments and billing infrastructure.',
+    lede: 'Billing is where products quietly lose money: failed renewals nobody chases, usage nobody meters, refunds nobody reconciles. wwwdot.dev builds payment flows that account for the unhappy paths, because that is where the revenue leaks.',
+    capabilities: [
+      'Stripe, Razorpay and PayPal integration',
+      'Subscription and recurring billing',
+      'Usage-based and metered pricing',
+      'Pay-per-use credit wallets',
+      'Fiat-to-crypto payment flows',
+      'Micro-payment handling',
+      'Invoicing and reconciliation',
+    ],
+    approach: [
+      {
+        title: 'Idempotency is not optional',
+        body: 'Payment endpoints are built idempotent from the start. Network retries, duplicate webhooks and double-clicks are normal traffic, and a billing system that double-charges once loses more trust than it earns in a year.',
+      },
+      {
+        title: 'Webhooks as the source of truth',
+        body: 'Payment state is driven by verified provider webhooks rather than client callbacks, which can be lost, replayed or forged. Reconciliation runs against the provider so the ledger cannot silently drift.',
+      },
+      {
+        title: 'Failure paths built first',
+        body: 'Declined cards, expired methods, partial refunds, chargebacks and mid-cycle plan changes are designed at the outset. They are the majority of real billing traffic and the usual source of unbilled revenue.',
+      },
+    ],
+    evidence: [],
+    faqs: [
+      {
+        q: 'Which payment providers do you integrate?',
+        a: 'Stripe, Razorpay and PayPal for card and local rails, plus on-chain settlement where crypto payment is required. Provider choice follows your market and currency needs rather than a default.',
+      },
+      {
+        q: 'Can you build usage-based billing?',
+        a: 'Yes. Metered usage, credit wallets and pay-per-use pricing are all supported, including per-customer cost tracking so pricing can be set against real unit economics rather than estimates.',
+      },
+      {
+        q: 'How do you prevent double charging?',
+        a: 'Payment endpoints are idempotent and state is driven by verified provider webhooks rather than client callbacks. Reconciliation runs against the provider so the internal ledger cannot drift unnoticed.',
+      },
+    ],
+    related: ['ai-saas-development', 'marketplace-development', 'p2p-platforms'],
+  },
+
+  {
+    slug: 'marketplace-development',
+    h1: 'Marketplace Development',
+    title: 'Marketplace Development Company',
+    description:
+      'Two-sided marketplaces that actually transact: matching, escrow, payouts, ratings and the supply-side tooling sellers need.',
+    intent: 'Hire a company to build a two-sided marketplace platform.',
+    lede: 'Marketplaces fail on the supply side long before demand is the problem. wwwdot.dev builds the seller tooling, payout rails and trust mechanics that make a marketplace worth listing on, not just browsing.',
+    capabilities: [
+      'Two-sided marketplace platforms',
+      'NFT and tokenized asset marketplaces',
+      'Service and task marketplaces',
+      'Escrow and split payouts',
+      'Ratings and reputation systems',
+      'Search, filtering and matching',
+      'Seller dashboards and analytics',
+    ],
+    approach: [
+      {
+        title: 'Build for the seller first',
+        body: 'A marketplace with no supply has nothing to sell. Listing, inventory, pricing and payout tooling are treated as primary product surface rather than an admin afterthought.',
+      },
+      {
+        title: 'Money movement is the hard part',
+        body: 'Split payouts, holds, refunds and platform fees are designed up front with the payment provider, because retrofitting marketplace payouts onto simple checkout is close to a rewrite.',
+      },
+      {
+        title: 'Trust before scale',
+        body: 'Ratings, verification and dispute handling are built in early. They cost far more to add once a marketplace already has users whose history predates the system.',
+      },
+    ],
+    evidence: [],
+    faqs: [
+      {
+        q: 'What makes a two-sided marketplace different from an ecommerce site?',
+        a: 'An ecommerce site sells its own inventory. A marketplace connects independent sellers with buyers, which adds seller onboarding, split payouts, platform fees, ratings and dispute resolution. Those systems, not the storefront, are the real build.',
+      },
+      {
+        q: 'How are payouts to sellers handled?',
+        a: 'Through provider-level split payments with holds, platform fees and refund handling designed in from the start. Retrofitting marketplace payouts onto standard checkout is close to a rewrite, so it is settled during architecture.',
+      },
+      {
+        q: 'Can you build an NFT or tokenized asset marketplace?',
+        a: 'Yes. On-chain marketplaces with custom contracts, royalties and wallet integration are supported, as are conventional service and product marketplaces settled in fiat.',
+      },
+    ],
+    related: ['payments-finance-automation', 'full-stack-development', 'tokenization-rwa'],
+  },
+
+  {
+    slug: 'dao-governance',
+    h1: 'DAO & Governance Development',
+    title: 'DAO Development & Governance Systems',
+    description:
+      'Governance tokens, on-chain proposals, voting dashboards and treasury systems built so decisions are legible and verifiable.',
+    intent: 'Find a company to build DAO governance and treasury systems.',
+    lede: 'Most DAO tooling makes voting possible but not legible. wwwdot.dev builds governance systems where a member can see what is being decided, who decided it, and what happened to the treasury as a result.',
+    capabilities: [
+      'Governance token design',
+      'On-chain proposal systems',
+      'Voting dashboards and delegation',
+      'Treasury management and reporting',
+      'Timelock and execution controls',
+      'Multi-signature integration',
+      'Member and contributor tooling',
+    ],
+    approach: [
+      {
+        title: 'Execution is the risky part',
+        body: 'Passing a proposal is straightforward. Executing it safely needs timelocks, guardrails and a clear path to cancel, so a passed vote cannot immediately drain a treasury before anyone can react.',
+      },
+      {
+        title: 'Turnout is a design problem',
+        body: 'Low participation is usually an interface failure rather than apathy. Proposals are presented so a member can understand the decision and its treasury impact without reading a contract.',
+      },
+      {
+        title: 'Treasury visible by default',
+        body: 'Holdings, flows and spend against approved proposals are shown continuously rather than compiled on request, because governance without visible finances is theatre.',
+      },
+    ],
+    evidence: [],
+    faqs: [
+      {
+        q: 'What does a DAO governance system need?',
+        a: 'A governance token or membership rule, a proposal system, a voting mechanism with delegation, timelocked execution with the ability to cancel, and treasury reporting. Execution controls matter most, because that is where a passed proposal becomes irreversible action.',
+      },
+      {
+        q: 'How do you protect the treasury?',
+        a: 'Through timelocks between a vote passing and executing, multi-signature control on high-value actions, and spending limits enforced in contract rather than by policy. The delay is what gives members time to react to a malicious proposal.',
+      },
+      {
+        q: 'Can governance work without a token?',
+        a: 'Yes. Membership can be based on NFTs, allowlists or contribution records rather than a tradeable token, which avoids governance weight simply following whoever has the most capital.',
+      },
+    ],
+    related: ['blockchain-development', 'defi-protocol-development', 'tokenization-rwa'],
+  },
 ]
 
 export const serviceBySlug = (slug: string) => servicePages.find((s) => s.slug === slug)

@@ -106,6 +106,9 @@ export const services = [
   },
   {
     slug: 'blockchain-smart-contracts',
+    /* page is already live and indexed at /services/blockchain-development,
+       so the card aliases to it rather than renaming and 404ing that URL */
+    pageSlug: 'blockchain-development',
     title: 'Blockchain & Smart Contracts',
     blurb: 'Audited patterns, gas-optimized code.',
     icon: 'Blocks',
@@ -279,11 +282,6 @@ export const projects = [
 export const routes = [
   { path: '/', priority: 1.0, changefreq: 'weekly', lastmod: '2026-08-11' },
   { path: '/services', priority: 0.9, changefreq: 'monthly', lastmod: '2026-08-11' },
-  { path: '/services/ai-development', priority: 0.9, changefreq: 'monthly', lastmod: '2026-08-11' },
-  { path: '/services/ai-agent-development', priority: 0.9, changefreq: 'monthly', lastmod: '2026-08-11' },
-  { path: '/services/ai-saas-development', priority: 0.9, changefreq: 'monthly', lastmod: '2026-08-11' },
-  { path: '/services/mvp-development', priority: 0.9, changefreq: 'monthly', lastmod: '2026-08-11' },
-  { path: '/services/blockchain-development', priority: 0.8, changefreq: 'monthly', lastmod: '2026-08-11' },
   { path: '/work', priority: 0.9, changefreq: 'monthly', lastmod: '2026-08-12' },
 ]
 

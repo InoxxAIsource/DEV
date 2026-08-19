@@ -68,13 +68,19 @@ export function Services() {
                 delay={(i % 2) * 100}
                 className={i === 0 ? 'md:col-span-2' : ''}
               >
-                <div className="h-full rounded-2xl border border-line bg-bg p-7 transition-colors hover:border-accent/35 md:p-9">
+                {/* Each card routes to its own service page. Previously these
+                    were inert divs, so nine commercial topics had no crawlable
+                    destination and no conversion path. */}
+                <a
+                  href={`/services/${s.pageSlug ?? s.slug}`}
+                  className="group flex h-full flex-col rounded-2xl border border-line bg-bg p-7 transition-colors hover:border-accent/35 md:p-9"
+                >
                   <div className="flex items-center gap-4">
                     <div className="grid size-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent">
                       <Icon size={22} strokeWidth={1.75} />
                     </div>
                     <div className="min-w-0">
-                      <h3 className="text-lg font-semibold tracking-tight">{s.title}</h3>
+                      <h3 className="text-lg font-semibold tracking-tight transition-colors group-hover:text-accent">{s.title}</h3>
                       <p className="text-sm text-faint">{s.blurb}</p>
                     </div>
                   </div>
@@ -90,7 +96,7 @@ export function Services() {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </a>
               </Reveal>
             )
           })}

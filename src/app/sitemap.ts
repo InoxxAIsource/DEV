@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { SITE_URL, routes, workRoutes } from '@/data/site'
 import { featured } from '@/data/featured'
+import { servicePages } from '@/data/servicePages'
 
 /*
   Generated at build time. Authored routes live in `routes` in src/data/site.ts;
@@ -12,7 +13,14 @@ import { featured } from '@/data/featured'
   ignore the field.
 */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const all = [...routes, ...workRoutes(featured.map((p) => p.slug))]
+  const serviceRoutes = servicePages.map((s) => ({
+    path: `/services/${s.slug}`,
+    priority: 0.9,
+    changefreq: 'monthly',
+    lastmod: '2026-08-12',
+  }))
+
+  const all = [...routes, ...serviceRoutes, ...workRoutes(featured.map((p) => p.slug))]
 
   return all.map((r) => ({
     url: `${SITE_URL}${r.path}`,

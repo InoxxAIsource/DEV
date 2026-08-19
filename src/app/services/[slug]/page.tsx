@@ -193,7 +193,10 @@ export default async function ServicePage({
           </div>
         </section>
 
-        {/* Evidence — real shipped products */}
+        {/* Evidence — real shipped products. Hidden entirely when this service
+            has none, rather than printing an empty "Shipped work" heading that
+            advertises the gap. Honest omission beats a hollow section. */}
+        {work.length > 0 && (
         <section className="mt-24 border-t border-line pt-14">
           <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Shipped work</h2>
           <p className="mt-4 max-w-2xl text-muted">
@@ -226,6 +229,7 @@ export default async function ServicePage({
             ))}
           </div>
         </section>
+        )}
 
         {/* FAQ */}
         <section className="mt-24 border-t border-line pt-14">
