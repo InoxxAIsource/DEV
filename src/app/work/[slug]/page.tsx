@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { SITE_URL, org } from '@/data/site'
 import { featured } from '@/data/featured'
 import { videoMeta } from '@/data/videoMeta'
+import { caseStudies } from '@/data/caseStudies'
 import { servicePages } from '@/data/servicePages'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/Footer'
@@ -51,6 +52,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
   if (!p) notFound()
 
   const meta = videoMeta[p.media]
+  const study = caseStudies[p.slug]
   const idx = featured.findIndex((f) => f.slug === p.slug)
   const next = featured[(idx + 1) % featured.length]
   const prev = featured[(idx - 1 + featured.length) % featured.length]
@@ -202,6 +204,45 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
             </div>
           </dl>
         </section>
+
+        {study && (
+          <>
+            <section className="mt-20 border-t border-line pt-12">
+              <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">The challenge</h2>
+              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">{study.challenge}</p>
+            </section>
+
+            <section className="mt-20 border-t border-line pt-12">
+              <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">How it was built</h2>
+              <div className="mt-9 grid gap-10 md:grid-cols-3">
+                {study.build.map((b) => (
+                  <div key={b.title}>
+                    <h3 className="text-lg font-semibold tracking-tight text-accent">{b.title}</h3>
+                    <p className="mt-3 text-[15px] leading-relaxed text-muted">{b.body}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Doubles as a text description of the video for crawlers that
+                cannot process the file itself. */}
+            <section className="mt-20 border-t border-line pt-12">
+              <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+                What the walkthrough shows
+              </h2>
+              <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+                {study.walkthrough.map((w) => (
+                  <li key={w} className="flex items-baseline gap-3 text-[15px] text-muted">
+                    <span aria-hidden="true" className="font-mono text-[10px] text-accent">
+                      +
+                    </span>
+                    {w}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </>
+        )}
 
         {relatedServices.length > 0 && (
           <section className="mt-20 border-t border-line pt-12">
