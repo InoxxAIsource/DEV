@@ -1,11 +1,16 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
+import Script from 'next/script'
 import './globals.css'
 import { SITE_URL, org } from '@/data/site'
 import { jsonLdGraph } from '@/lib/schema'
 import { SmoothScroll } from '@/components/SmoothScroll'
 
 const title = `${org.name} | ${org.kind}`
+
+/* Google Analytics 4. Marketing site only — /aiagent is a separate application
+   and is not measured here. */
+const GA_MEASUREMENT_ID = 'G-TY1N2TKFP1'
 
 /*
   Next's Metadata API replaces the static tags the Vite build injected into
@@ -75,6 +80,23 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
       </head>
       <body>
+        {/* next/script rather than the raw tags Google supplies: the App Router
+            streams the document, so a bare <script> in the markup has no
+            ordering guarantee against hydration. afterInteractive loads the
+            tag once the page is usable, so measurement never competes with
+            first paint on pages carrying video. */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
         <SmoothScroll />
         {children}
       </body>
