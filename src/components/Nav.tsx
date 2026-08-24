@@ -3,9 +3,16 @@
 import { useEffect, useState } from 'react'
 import { Wordmark } from './Wordmark'
 
+/* Every entry renders as a plain <a>, which is what lets an in-page anchor and
+   a real route sit in the same list. /aiagent is served by a separate
+   application through a rewrite, so it has to be a full navigation — next/link
+   would try to route it client-side and find nothing, because this app has no
+   /aiagent route of its own. The scroll-spy is driven by [data-nav-theme]
+   sections rather than by this list, so adding a route here does not touch it. */
 const links = [
   { label: 'Work', href: '#work' },
   { label: 'Services', href: '#services' },
+  { label: 'AI Agents', href: '/aiagent' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ]
