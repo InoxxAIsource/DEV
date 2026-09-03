@@ -6,22 +6,32 @@ import { Reveal } from '../lib/Reveal'
 import { BrandIcon, socials } from './socials'
 import { org } from '../data/site'
 
-/* Same address the Organization schema publishes as mailto: */
+/* Same address the Organization schema publishes as mailto:. This is the
+   *displayed* address (footer link, "email us directly") — the form below
+   submits to /api/contact, which delivers to CONTACT_TO on the server and can
+   be a different inbox (contact@wwwdot.dev) than what is shown here. */
 const EMAIL = org.email
 
 const inputCls =
   'w-full rounded-lg border border-line bg-bg px-4 py-3 text-sm text-ink placeholder:text-faint outline-none transition-colors focus:border-accent/60 focus:ring-2 focus:ring-accent/20'
 
+type Status = 'idle' | 'sending' | 'sent' | 'error'
+
 export function Contact() {
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const [status, setStatus] = useState<Status>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const data = new FormData(e.currentTarget)
+    const form = e.currentTarget
+    const data = new FormData(form)
     const name = String(data.get('name') || '').trim()
     const email = String(data.get('email') || '').trim()
     const type = String(data.get('type') || '')
     const message = String(data.get('message') || '').trim()
+    /* Honeypot: real visitors never see or fill this field (see input below). */
+    const company = String(data.get('company') || '')
 
     const errs: Record<string, string> = {}
     if (!name) errs.name = 'Please add your name.'
@@ -30,9 +40,34 @@ export function Contact() {
     setErrors(errs)
     if (Object.keys(errs).length) return
 
-    const subject = encodeURIComponent(`Project inquiry: ${type}`)
-    const body = encodeURIComponent(`${message}\n\nFrom: ${name} (${email})`)
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
+    setStatus('sending')
+    setErrorMessage('')
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, type, message, company }),
+      })
+      const json = await res.json().catch(() => ({}))
+
+      if (!res.ok) {
+        if (json.errors) {
+          setErrors(json.errors)
+          setStatus('idle')
+        } else {
+          setStatus('error')
+          setErrorMessage(json.error || 'Something went wrong. Please try again.')
+        }
+        return
+      }
+
+      setStatus('sent')
+      form.reset()
+    } catch {
+      setStatus('error')
+      setErrorMessage('Could not reach the server. Please try again or email us directly.')
+    }
   }
 
   return (
@@ -73,6 +108,14 @@ export function Contact() {
 
           <Reveal delay={120}>
             <form onSubmit={onSubmit} noValidate className="rounded-2xl border border-line bg-bg p-7 md:p-9">
+              {/* Honeypot — hidden from sighted users and never announced to a
+                  screen reader. A human never fills it; a bot filling every
+                  field on the form fills it too. */}
+              <div aria-hidden="true" className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden">
+                <label htmlFor="company">Company</label>
+                <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
+
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="grid gap-2">
                   <label htmlFor="name" className="text-sm font-medium">
@@ -126,10 +169,22 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="mt-7 w-full rounded-full bg-accent py-3.5 font-semibold text-bg transition-transform hover:brightness-110 active:scale-[0.99]"
+                disabled={status === 'sending'}
+                className="mt-7 w-full rounded-full bg-accent py-3.5 font-semibold text-bg transition-transform hover:brightness-110 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
               >
-                Send message
+                {status === 'sending' ? 'Sending…' : 'Send message'}
               </button>
+
+              {status === 'sent' && (
+                <p className="mt-4 text-center text-sm text-accent" role="status">
+                  Message sent. We reply within one business day.
+                </p>
+              )}
+              {status === 'error' && (
+                <p className="mt-4 text-center text-sm text-accent" role="alert">
+                  {errorMessage || 'Something went wrong. Please try again.'}
+                </p>
+              )}
             </form>
           </Reveal>
         </div>
